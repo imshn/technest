@@ -29,10 +29,50 @@ const organizationSchema = {
     { "@type": "City", name: "Bengaluru", containedInPlace: { "@type": "Country", name: "India" } },
     { "@type": "Text", value: "Worldwide" },
   ],
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", "h2", ".speakable"],
+  },
   sameAs: [
     "https://github.com/technestdev",
     "https://linkedin.com/company/technestdev",
     "https://twitter.com/technestdev",
+  ],
+}
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Build a Multi-Agent AI System for Your Business",
+  description:
+    "A step-by-step process for designing, building, and deploying a production-ready multi-agent AI system that automates complex business workflows.",
+  totalTime: "P6W",
+  estimatedCost: { "@type": "MonetaryAmount", currency: "USD", value: "5000" },
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Discovery & Workflow Mapping",
+      text: "Map the target workflow, identify decision points, define agent boundaries, and set measurable success criteria.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Agent Architecture Design",
+      text: "Design the orchestrator–worker topology, define tool registry, plan memory strategy, and choose the LLM stack.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Iterative Build",
+      text: "Build and test each agent in isolation, integrate the orchestration layer, and validate with real data.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Production Deployment",
+      text: "Deploy on your infrastructure, configure monitoring and observability, and complete team handoff with documentation.",
+    },
   ],
 }
 
@@ -44,6 +84,14 @@ const websiteSchema = {
   name: "TechNest",
   description: "AI-native digital agency for ambitious businesses",
   publisher: { "@id": `${siteUrl}/#organization` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 }
 
 const faqSchema = {
@@ -109,6 +157,46 @@ const faqSchema = {
   ],
 }
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteUrl}/#localbusiness`,
+  name: "TechNest",
+  url: siteUrl,
+  email: "hello@technest.dev",
+  description:
+    "TechNest is an AI-native digital agency specializing in multi-agent systems, agentic workflows, N8n automation, SaaS development, and AI-powered marketing for startups and enterprises globally.",
+  foundingDate: "2023",
+  priceRange: "$$$",
+  currenciesAccepted: "USD",
+  paymentAccepted: "Bank Transfer, Credit Card",
+  openingHours: "Mo-Fr 09:00-18:00",
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "Country", name: "Kuwait" },
+    { "@type": "City", name: "Dubai" },
+    { "@type": "City", name: "Bengaluru" },
+    { "@type": "Text", value: "Worldwide" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "AI & Software Development Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Multi-Agent AI Systems" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Agentic Workflows" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "N8n Workflow Automation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "SaaS Platform Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web App Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
+    ],
+  },
+  sameAs: [
+    "https://github.com/technestdev",
+    "https://linkedin.com/company/technestdev",
+    "https://twitter.com/technestdev",
+  ],
+}
+
 export function SchemaMarkup() {
   return (
     <>
@@ -118,7 +206,15 @@ export function SchemaMarkup() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <script
         type="application/ld+json"

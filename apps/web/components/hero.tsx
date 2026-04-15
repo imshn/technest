@@ -1,20 +1,40 @@
+"use client";
 import { RiArrowRightLine, RiFlowChart, RiRobotLine } from "@remixicon/react"
 import { CalendlyButton } from "@/components/calendly-button"
+// import SplineViewer from "@/components/spline-viewer"
+// import Spline from '@splinetool/react-spline/next';
+import dynamic from 'next/dynamic';
+import { Suspense } from "react";
+
+const SplineScene = dynamic(() => import('./SplineScene'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-black/10" />, // Adds a placeholder
+});
 
 export function Hero() {
   return (
     <section className="min-h-dvh w-full relative overflow-hidden flex items-center">
+      {/* Spline 3D background */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <Suspense fallback={<div className="bg-slate-900 w-full h-full" />}>
+          <SplineScene
+            scene="https://prod.spline.design/NDUC8hY13R2TOxGa/scene.splinecode"
+          />
+        </Suspense>
+      </div>
+      {/* Thin wash so text stays readable */}
+      <div className="absolute inset-0 bg-background/30 pointer-events-none z-1" />
       <div
-        className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04] z-2"
         style={{
           backgroundImage:
             "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
         }}
       />
-      <div className="absolute top-1/4 right-0 w-150 h-150 rounded-full bg-primary/6 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-150 h-150 rounded-full bg-primary/6 blur-[120px] pointer-events-none z-2" />
 
-      <div className="relative w-full max-w-350 mx-auto px-6 md:px-10 pt-24 pb-16">
+      <div className="relative z-10 w-full max-w-350 mx-auto px-6 md:px-10 pt-24 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_540px] gap-12 xl:gap-20 items-center min-h-[calc(100dvh-160px)]">
 
           {/* LEFT */}
@@ -92,7 +112,7 @@ export function Hero() {
                 <span className="ml-2 text-xs text-muted-foreground font-mono">agent-orchestrator.ts</span>
               </div>
               <div className="p-5 font-mono text-xs space-y-2.5 bg-zinc-950">
-                <TerminalLine delay={0}   color="text-zinc-500" content="// TechNest Agent Runtime v2.4" />
+                <TerminalLine delay={0} color="text-zinc-500" content="// TechNest Agent Runtime v2.4" />
                 <TerminalLine delay={0.3} color="text-blue-400" content="→ Initializing multi-agent pipeline..." />
                 <TerminalLine delay={0.8} color="text-zinc-400" content="  ✓ Agent[0]: Data Ingestion  (47ms)" />
                 <TerminalLine delay={1.1} color="text-zinc-400" content="  ✓ Agent[1]: NLP Processing  (91ms)" />
@@ -103,7 +123,7 @@ export function Hero() {
                 <div className="flex items-center gap-1 pt-1">
                   <span className="text-green-400">$</span>
                   <span className="text-zinc-300 ml-1">_</span>
-                  <span className="w-[7px] h-[14px] bg-zinc-300 ml-0.5" style={{ animation: "type-cursor 1s step-end infinite" }} />
+                  <span className="w-1.75 h-3.5 bg-zinc-300 ml-0.5" style={{ animation: "type-cursor 1s step-end infinite" }} />
                 </div>
               </div>
             </div>
@@ -118,8 +138,8 @@ export function Hero() {
             <div className="grid grid-cols-3 gap-3">
               {[
                 { label: "Projects", value: "143+" },
-                { label: "Uptime",   value: "99.7%" },
-                { label: "Clients",  value: "31" },
+                { label: "Uptime", value: "99.7%" },
+                { label: "Clients", value: "31" },
               ].map((m) => (
                 <div key={m.label} className="rounded-xl border border-border/60 bg-card/80 backdrop-blur p-3.5 text-center" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)" }}>
                   <p className="text-lg font-semibold tracking-tight text-foreground">{m.value}</p>

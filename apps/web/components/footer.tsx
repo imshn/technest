@@ -22,6 +22,9 @@ const companyLinks = [
   { label: "Process", href: "#process" },
   { label: "Results", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
+  { label: "Blog", href: "/blog" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "AI Automation Statistics", href: "/ai-automation-statistics" },
 ]
 
 export function Footer() {

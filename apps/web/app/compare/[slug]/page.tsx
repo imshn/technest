@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
+import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CalendlyButton } from "@/components/calendly-button"
@@ -146,6 +147,15 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   }
 }
 
+const serviceLinks = [
+  { label: "Multi-Agent AI Systems", href: "/services/multi-agent-ai-systems" },
+  { label: "Agentic Workflows", href: "/services/agentic-workflows" },
+  { label: "N8n Workflow Automation", href: "/services/n8n-workflow-automation" },
+  { label: "SaaS Platform Development", href: "/services/saas-platform-development" },
+  { label: "Web App Development", href: "/services/web-app-development" },
+  { label: "Mobile App Development", href: "/services/mobile-app-development" },
+]
+
 export default async function ComparePage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params
   const data = comparisons[slug]
@@ -154,6 +164,37 @@ export default async function ComparePage(props: { params: Promise<{ slug: strin
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": `https://technest.dev/compare/${slug}`,
+            name: data.headline,
+            description: data.metaDescription,
+            url: `https://technest.dev/compare/${slug}`,
+            breadcrumb: {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://technest.dev" },
+                { "@type": "ListItem", position: 2, name: "Compare", item: "https://technest.dev/compare" },
+                { "@type": "ListItem", position: 3, name: data.headline, item: `https://technest.dev/compare/${slug}` },
+              ],
+            },
+            mainEntity: {
+              "@type": "ItemList",
+              name: `${data.headline} Feature Comparison`,
+              itemListElement: data.rows.map((row, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: row.feature,
+                description: `TechNest: ${typeof row.technest === "boolean" ? (row.technest ? "Yes" : "No") : row.technest} | ${data.competitor}: ${typeof row.competitor === "boolean" ? (row.competitor ? "Yes" : "No") : row.competitor}`,
+              })),
+            },
+          }),
+        }}
+      />
       <main className="min-h-dvh pt-24 pb-24">
         <div className="max-w-350 mx-auto px-6 md:px-10">
           {/* Header */}
@@ -238,6 +279,22 @@ export default async function ComparePage(props: { params: Promise<{ slug: strin
               icon={<RiArrowRightLine size={15} />}
               className="flex-row-reverse"
             />
+          </div>
+
+          {/* Related Services */}
+          <div className="mt-20 pt-10 border-t border-border/40">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-5">Explore Our Services</p>
+            <div className="flex flex-wrap gap-3">
+              {serviceLinks.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  className="text-sm text-muted-foreground hover:text-foreground border border-border/50 rounded-lg px-4 py-2 transition-colors hover:border-border"
+                >
+                  {s.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </main>

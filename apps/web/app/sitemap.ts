@@ -83,6 +83,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  // Standalone high-value pages (link-bait / resources)
+  const resourcePages = [
+    {
+      url: `${siteUrl}/ai-automation-statistics`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+  ]
+
   return [
     homepage,
     blogIndex,
@@ -91,5 +101,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudyPages,
     ...servicePages,
     ...comparePages,
+    ...resourcePages,
   ]
 }

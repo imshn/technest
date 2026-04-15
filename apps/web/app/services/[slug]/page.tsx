@@ -363,6 +363,50 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "@id": `https://technest.dev/services/${slug}`,
+            name: svc.title,
+            description: svc.description,
+            url: `https://technest.dev/services/${slug}`,
+            provider: { "@id": "https://technest.dev/#organization" },
+            serviceType: svc.title,
+            areaServed: "Worldwide",
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: svc.faq.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://technest.dev" },
+              { "@type": "ListItem", position: 2, name: "Services", item: "https://technest.dev/services" },
+              { "@type": "ListItem", position: 3, name: svc.title, item: `https://technest.dev/services/${slug}` },
+            ],
+          }),
+        }}
+      />
       <main className="min-h-dvh pt-24 pb-24">
         <div className="max-w-350 mx-auto px-6 md:px-10">
           {/* Header */}

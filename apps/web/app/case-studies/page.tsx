@@ -1,8 +1,32 @@
+import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { caseStudies } from "@/components/case-studies-preview"
 import Link from "next/link"
 import { RiArrowRightLine } from "@remixicon/react"
+
+export const metadata: Metadata = {
+  title: "Case Studies — AI Automation & Software Development Results | TechNest",
+  description: "See how startups and enterprises cut costs, shipped faster, and automated operations with TechNest. Real results across fintech, SaaS, and e-commerce.",
+  keywords: [
+    "AI automation case studies",
+    "agentic workflow results",
+    "n8n automation case study",
+    "SaaS development results",
+    "AI agency results",
+    "TechNest case studies",
+    "AI automation ROI",
+    "software development agency results",
+  ],
+  alternates: { canonical: "https://technest.dev/case-studies" },
+  openGraph: {
+    type: "website",
+    url: "https://technest.dev/case-studies",
+    title: "Case Studies — Real AI Automation Results | TechNest",
+    description: "How TechNest helped startups cut 80% of manual work, launch MVPs in 6 weeks, and reduce automation costs by 85%.",
+    siteName: "TechNest",
+  },
+}
 
 export default function CaseStudiesPage() {
   return (

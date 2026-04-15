@@ -1,0 +1,56 @@
+# TechNest
+
+> TechNest is an AI-native digital agency that builds multi-agent AI systems, agentic workflows, N8n automation, SaaS platforms, web and mobile apps, and AI-powered marketing for startups and enterprises globally.
+
+TechNest was founded in 2023. We specialize in replacing manual, decision-heavy workflows with autonomous AI agents and delivering production-grade software from MVP to scale. We serve clients across the United States, Kuwait, UAE, and India — fully remote.
+
+## Services
+
+- [Multi-Agent AI Systems](https://technest.dev/services/multi-agent-ai-systems): Design, build, and deploy autonomous multi-agent pipelines using LangChain, LangGraph, OpenAI, and Claude API. Replaces 10–40 hours of manual work per week.
+- [Agentic Workflows](https://technest.dev/services/agentic-workflows): LLM-powered automation that handles ambiguity, conditional logic, and real-time tool use — beyond simple if-then automation.
+- [N8n Workflow Automation](https://technest.dev/services/n8n-workflow-automation): Self-hosted N8n deployments that replace Zapier at 80–90% lower cost with full data privacy.
+- [SaaS Platform Development](https://technest.dev/services/saas-platform-development): Full-stack SaaS with Next.js, Supabase, and Stripe. Multi-tenant, production-ready, shipped in 6 weeks.
+- [Web App Development](https://technest.dev/services/web-app-development): Custom web applications with Next.js, React, and Postgres — TypeScript-first, scalable.
+- [Mobile App Development](https://technest.dev/services/mobile-app-development): iOS and Android apps from a single React Native + Expo codebase. App Store launch included.
+- [Desktop App Development](https://technest.dev/services/desktop-app-development): Cross-platform desktop apps with Tauri and Electron for Windows, macOS, and Linux.
+- [Graphic Designing](https://technest.dev/services/graphic-designing): Brand identity, UI kits, and pitch decks. Figma-based, product-thinking approach.
+- [Digital Marketing](https://technest.dev/services/digital-marketing): Technical SEO, programmatic content, and CRO for compounding organic growth.
+
+## Case Studies
+
+- [Reduced Manual Lead Scoring by 80%](https://technest.dev/case-studies/case-study-1): Built an agentic lead scoring workflow for a FinTech startup. 8 hours saved per week, 94% of leads scored automatically, routing errors eliminated.
+- [SaaS MVP Launched in 6 Weeks, Scaled to 50K Users](https://technest.dev/case-studies/case-study-2): Delivered a production B2B SaaS platform with multi-tenancy, Stripe billing, and automated onboarding. 50,000 users in 5 months.
+- [Cut Automation Costs 85% vs Zapier](https://technest.dev/case-studies/case-study-3): Migrated an e-commerce team from Zapier ($2,400/month) to self-hosted N8n (~$200/month). 14 workflows migrated in 2 weeks, zero incidents.
+
+## Blog
+
+- [How to Build a Multi-Agent AI System That Actually Works in Production](https://technest.dev/blog/post-1): Architecture guide covering orchestrator–worker split, state management, safe tool execution, memory strategies, and production validation.
+- [N8n vs Zapier vs Make: The Honest Comparison for 2025](https://technest.dev/blog/post-2): Pricing, logic complexity, integrations, and data privacy compared across all three tools.
+- [SaaS MVP in 6 Weeks: The Tech Stack and Process We Use Every Time](https://technest.dev/blog/post-3): The exact Next.js + Supabase + Stripe stack and week-by-week process used on every SaaS build.
+
+## Competitor Comparisons
+
+- [TechNest vs Upwork](https://technest.dev/compare/upwork)
+- [TechNest vs Toptal](https://technest.dev/compare/toptal)
+- [TechNest vs Fiverr](https://technest.dev/compare/fiverr)
+- [TechNest vs Accenture](https://technest.dev/compare/accenture)
+- [TechNest vs Freelancer.com](https://technest.dev/compare/freelancer)
+
+## Contact
+
+- Website: https://technest.dev
+- Email: hello@technest.dev
+- Book a free strategy call: https://technest.dev (Calendly link in header)
+- GitHub: https://github.com/technestdev
+- LinkedIn: https://linkedin.com/company/technestdev
+- Twitter/X: https://twitter.com/technestdev
+
+## Key Facts
+
+- Founded: 2023
+- Team size: ~15
+- Minimum project: $5,000
+- Typical timeline: 6–10 weeks
+- IP transfer: 100% on project completion
+- NDA: Signed before engagement starts
+- Post-launch support: 30 days included
