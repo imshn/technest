@@ -1,19 +1,37 @@
-import { Button } from "@workspace/ui/components/button"
+import { UrgencyBar } from "@/components/urgency-bar"
+import { Navbar } from "@/components/navbar"
+import { Hero } from "@/components/hero"
+import { Marquee } from "@/components/marquee"
+import { TrustBar } from "@/components/trust-bar"
+import { Stats } from "@/components/stats"
+import { Services } from "@/components/services"
+import { Process } from "@/components/process"
+import { Testimonials } from "@/components/testimonials"
+import { BlogPreview } from "@/components/blog-preview"
+import { CaseStudiesPreview } from "@/components/case-studies-preview"
+import { NewsletterCTA } from "@/components/newsletter-cta"
+import { FAQ } from "@/components/faq"
+import { CTA } from "@/components/cta"
+import { Footer } from "@/components/footer"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <main className="min-h-dvh overflow-x-hidden">
+      <UrgencyBar />
+      <Navbar />
+      <Hero />
+      <Marquee />
+      <TrustBar />
+      <Stats />
+      <Services />
+      <Process />
+      <Testimonials />
+      <BlogPreview />
+      <CaseStudiesPreview />
+      <NewsletterCTA />
+      <FAQ />
+      <CTA />
+      <Footer />
+    </main>
   )
 }
