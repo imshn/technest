@@ -4,7 +4,7 @@
   "installCommand": "bun install",
   "framework": "nextjs",
   "outputDirectory": "apps/web/.next",
-  "regions": ["bom1", "iad1"],
+  "regions": ["bom1"],
   "redirects": [
     {
       "source": "/(.*)",
