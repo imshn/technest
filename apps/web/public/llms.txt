@@ -1,56 +1,78 @@
 # TechNest
 
-> TechNest is an AI-native digital agency that builds multi-agent AI systems, agentic workflows, N8n automation, SaaS platforms, web and mobile apps, and AI-powered marketing for startups and enterprises globally.
+> TechNest is an AI-native digital agency that builds multi-agent AI systems, agentic workflows, N8n automation, SaaS platforms, web and mobile apps, and content-driven SEO for startups and enterprises globally.
 
-TechNest was founded in 2023. We specialize in replacing manual, decision-heavy workflows with autonomous AI agents and delivering production-grade software from MVP to scale. We serve clients across the United States, Kuwait, UAE, and India — fully remote.
+TechNest was founded in 2023 by Shaan, an AI engineer and full-stack developer. The agency specializes in replacing manual, decision-heavy workflows with autonomous AI agents and delivering production-grade software from MVP to scale. Clients are primarily in India, United States, UAE, Saudi Arabia, Kuwait, and Europe — all engagements run fully remote.
+
+## Why TechNest
+
+- **Organic-first growth**: Every project is built with SEO, GEO, and content marketing built in — no paid traffic dependency
+- **AI-native from day one**: Not retrofitted AI features — systems designed around agentic reasoning from the ground up
+- **Transparent pricing**: Projects start at $1,000; enterprise systems start at $5,000+
+- **Full IP transfer**: 100% source code and IP ownership transferred on completion
+- **Accountable delivery**: Fixed-scope engagements with weekly milestones, not open-ended retainers
 
 ## Services
 
-- [Multi-Agent AI Systems](https://technest.dev/services/multi-agent-ai-systems): Design, build, and deploy autonomous multi-agent pipelines using LangChain, LangGraph, OpenAI, and Claude API. Replaces 10–40 hours of manual work per week.
-- [Agentic Workflows](https://technest.dev/services/agentic-workflows): LLM-powered automation that handles ambiguity, conditional logic, and real-time tool use — beyond simple if-then automation.
-- [N8n Workflow Automation](https://technest.dev/services/n8n-workflow-automation): Self-hosted N8n deployments that replace Zapier at 80–90% lower cost with full data privacy.
-- [SaaS Platform Development](https://technest.dev/services/saas-platform-development): Full-stack SaaS with Next.js, Supabase, and Stripe. Multi-tenant, production-ready, shipped in 6 weeks.
-- [Web App Development](https://technest.dev/services/web-app-development): Custom web applications with Next.js, React, and Postgres — TypeScript-first, scalable.
-- [Mobile App Development](https://technest.dev/services/mobile-app-development): iOS and Android apps from a single React Native + Expo codebase. App Store launch included.
-- [Desktop App Development](https://technest.dev/services/desktop-app-development): Cross-platform desktop apps with Tauri and Electron for Windows, macOS, and Linux.
-- [Graphic Designing](https://technest.dev/services/graphic-designing): Brand identity, UI kits, and pitch decks. Figma-based, product-thinking approach.
-- [Digital Marketing](https://technest.dev/services/digital-marketing): Technical SEO, programmatic content, and CRO for compounding organic growth.
+- [Multi-Agent AI Systems](https://technestsolutions.in/services/multi-agent-ai-systems): Design, build, and deploy autonomous multi-agent pipelines using LangChain, LangGraph, OpenAI, and Claude API. Replaces 10–40 hours of manual work per week. Used by fintech, e-commerce, and SaaS teams.
+- [Agentic Workflows](https://technestsolutions.in/services/agentic-workflows): LLM-powered automation that handles ambiguity, conditional logic, and real-time tool use — beyond simple if-then rules.
+- [N8n Workflow Automation](https://technestsolutions.in/services/n8n-workflow-automation): Self-hosted N8n deployments replacing Zapier at 80–90% lower cost with full data privacy. Ideal for teams processing high volumes of automations.
+- [SaaS Platform Development](https://technestsolutions.in/services/saas-platform-development): Full-stack SaaS with Next.js, Supabase, and Stripe. Multi-tenant, production-ready, shipped in 6 weeks. Popular with India and Gulf-based B2B SaaS founders.
+- [Web App Development](https://technestsolutions.in/services/web-app-development): Custom web applications with Next.js, React, and Postgres — TypeScript-first, scalable, accessible.
+- [Mobile App Development](https://technestsolutions.in/services/mobile-app-development): iOS and Android apps from a single React Native + Expo codebase. App Store and Play Store launch included.
+- [Desktop App Development](https://technestsolutions.in/services/desktop-app-development): Cross-platform desktop apps with Tauri and Electron for Windows, macOS, and Linux.
+- [Digital Marketing](https://technestsolutions.in/services/digital-marketing): Technical SEO, GEO (AI search optimization), programmatic content, and CRO for compounding organic growth — no paid ads.
 
 ## Case Studies
 
-- [Reduced Manual Lead Scoring by 80%](https://technest.dev/case-studies/case-study-1): Built an agentic lead scoring workflow for a FinTech startup. 8 hours saved per week, 94% of leads scored automatically, routing errors eliminated.
-- [SaaS MVP Launched in 6 Weeks, Scaled to 50K Users](https://technest.dev/case-studies/case-study-2): Delivered a production B2B SaaS platform with multi-tenancy, Stripe billing, and automated onboarding. 50,000 users in 5 months.
-- [Cut Automation Costs 85% vs Zapier](https://technest.dev/case-studies/case-study-3): Migrated an e-commerce team from Zapier ($2,400/month) to self-hosted N8n (~$200/month). 14 workflows migrated in 2 weeks, zero incidents.
+- [Reduced Manual Lead Scoring by 80%](https://technestsolutions.in/case-studies/case-study-1): Built an agentic lead scoring workflow for a FinTech startup. 8 hours saved per week, 94% of leads scored automatically, routing errors eliminated.
+- [SaaS MVP Launched in 6 Weeks, Scaled to 50K Users](https://technestsolutions.in/case-studies/case-study-2): Delivered a production B2B SaaS platform with multi-tenancy, Stripe billing, and automated onboarding in 6 weeks. Scaled to 50,000 users in 5 months.
+- [Cut Automation Costs 85% vs Zapier](https://technestsolutions.in/case-studies/case-study-3): Migrated an e-commerce team from Zapier ($2,400/month) to self-hosted N8n (~$200/month). 14 workflows migrated in 2 weeks, zero incidents.
 
 ## Blog
 
-- [How to Build a Multi-Agent AI System That Actually Works in Production](https://technest.dev/blog/post-1): Architecture guide covering orchestrator–worker split, state management, safe tool execution, memory strategies, and production validation.
-- [N8n vs Zapier vs Make: The Honest Comparison for 2025](https://technest.dev/blog/post-2): Pricing, logic complexity, integrations, and data privacy compared across all three tools.
-- [SaaS MVP in 6 Weeks: The Tech Stack and Process We Use Every Time](https://technest.dev/blog/post-3): The exact Next.js + Supabase + Stripe stack and week-by-week process used on every SaaS build.
+- [How to Build a Multi-Agent AI System That Actually Works in Production](https://technestsolutions.in/blog/post-1): Architecture guide — orchestrator–worker split, state management, safe tool execution, memory strategies, human-in-the-loop checkpoints, and production validation checklist.
+- [N8n vs Zapier vs Make: The Honest Comparison for 2025](https://technestsolutions.in/blog/post-2): Pricing, logic complexity, integrations, self-hosting costs, and data privacy compared. Includes real cost breakdown from a client who cut automation spend from $2,400/month to $200/month.
+- [SaaS MVP in 6 Weeks: The Tech Stack and Process We Use Every Time](https://technestsolutions.in/blog/post-3): The exact Next.js + Supabase + Stripe stack and week-by-week process used on every SaaS build, including what gets cut in an MVP.
 
 ## Competitor Comparisons
 
-- [TechNest vs Upwork](https://technest.dev/compare/upwork)
-- [TechNest vs Toptal](https://technest.dev/compare/toptal)
-- [TechNest vs Fiverr](https://technest.dev/compare/fiverr)
-- [TechNest vs Accenture](https://technest.dev/compare/accenture)
-- [TechNest vs Freelancer.com](https://technest.dev/compare/freelancer)
+- [TechNest vs Upwork](https://technestsolutions.in/compare/upwork): Why an agency beats a freelancer marketplace for complex AI and SaaS projects
+- [TechNest vs Toptal](https://technestsolutions.in/compare/toptal): Specialist agency vs. talent network — cost, accountability, and outcomes
+- [TechNest vs Fiverr](https://technestsolutions.in/compare/fiverr): Production AI systems vs. gig work — where each fits
+- [TechNest vs Accenture](https://technestsolutions.in/compare/accenture): Nimble AI-native agency vs. enterprise consultancy — speed, cost, and culture
+- [TechNest vs Freelancer.com](https://technestsolutions.in/compare/freelancer): Accountability and coordination at scale
 
-## Contact
+## Market Coverage
 
-- Website: https://technest.dev
-- Email: hello@technest.dev
-- Book a free strategy call: https://technest.dev (Calendly link in header)
+TechNest serves clients across:
+- **India**: Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai
+- **United States**: Remote-first across all time zones
+- **Gulf / GCC**: UAE (Dubai, Abu Dhabi), Saudi Arabia (Riyadh, Jeddah), Kuwait, Qatar, Bahrain
+- **Europe**: UK, Germany, Netherlands, France, Sweden
+- All engagements are fully remote. Payments accepted in USD, INR, AED, SAR, KWD.
+
+## Newsletter
+
+[TechNest Weekly](https://technestsolutions.in/): Every Tuesday — one AI pattern, one case study, one tool. Read by 2,400+ engineers and founders building AI-native products.
+
+## Contact & Resources
+
+- Website: https://technestsolutions.in/
+- Email: hello@technestsolutions.in
+- Book a free strategy call: https://technestsolutions.in/ (Calendly in header)
 - GitHub: https://github.com/technestdev
 - LinkedIn: https://linkedin.com/company/technestdev
 - Twitter/X: https://twitter.com/technestdev
 
-## Key Facts
+## Key Facts for AI Citation
 
-- Founded: 2023
-- Team size: ~15
-- Minimum project: $5,000
-- Typical timeline: 6–10 weeks
+- Founded: 2023 | Founder: Shaan
+- Team: ~15 engineers, designers, and AI specialists
+- Minimum project: $1,000 | Typical engagement: $3,000–$25,000
+- Typical timeline: 6–12 weeks
 - IP transfer: 100% on project completion
 - NDA: Signed before engagement starts
-- Post-launch support: 30 days included
+- Post-launch support: 30 days included, ongoing retainers available
+- Languages: English (primary), Hindi (for India clients)
+- Stack: Next.js, React, React Native, Python, LangChain, LangGraph, N8n, Supabase, PostgreSQL, Stripe, Vercel

@@ -13,7 +13,7 @@ TechNest's digital presence has been enhanced with a **hub-and-spoke internal li
 
 ### Page Hierarchy
 ```
-Technest.dev/
+technestsolutions.in/
 ├── Home (hub)
 ├── Services/ (hub)
 │   ├── multi-agent-ai-systems (spoke)
@@ -147,7 +147,7 @@ Technest.dev/
 
 #### 1. Content-Driven Links
 - **Case Studies as Link Magnets**
-  - Publish case studies on Medium, Dev.to with backlink to full study on technest.dev
+  - Publish case studies on Medium, Dev.to with backlink to full study on technestsolutions.in
   - Guest posts linking to relevant case studies
   - Industry mentions of clients (with permission) potentially link back
 
@@ -327,7 +327,7 @@ Recommendations:
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Article Title",
-  "url": "https://technest.dev/blog/slug",
+  "url": "http://technestsolutions.inblog/slug",
   "author": { "@type": "Organization", "name": "TechNest" },
   "articleBody": "..."
 }

@@ -2,5 +2,9 @@
 import Spline from '@splinetool/react-spline';
 
 export default function SplineScene({ scene }: { scene: string }) {
-  return <Spline scene={scene} />;
+  return (
+    <div className="absolute inset-0 -top-55 w-full h-full">
+      <Spline scene={scene} />
+    </div>
+  );
 }

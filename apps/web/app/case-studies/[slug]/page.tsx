@@ -190,7 +190,7 @@ const caseStudyContent: Record<string, CaseStudyContent> = {
   },
 }
 
-const siteUrl = "https://technest.dev"
+const siteUrl = "https://technestsolutions.in"
 
 export async function generateStaticParams() {
   return caseStudies.map((cs) => ({ slug: cs.slug }))

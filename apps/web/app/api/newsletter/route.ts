@@ -1,46 +1,19 @@
-export async function POST(request: Request) {
-  try {
-    const { email } = await request.json()
+import { NextRequest, NextResponse } from "next/server"
+import { subscribeEmail } from "@/lib/api-client"
 
-    // Validate email
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return new Response(JSON.stringify({ error: 'Invalid email' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      })
-    }
+export async function POST(req: NextRequest) {
+  const { email } = await req.json()
 
-    // TODO: Replace with your newsletter service
-    // Examples:
-    // - Resend API: https://resend.com
-    // - Mailchimp: https://mailchimp.com
-    // - ConvertKit: https://convertkit.com
-    // - Substack: https://substack.com
-    // - Custom database
-
-    // Placeholder: Log to console (replace with actual service)
-    console.log('[Newsletter] New subscription:', email)
-
-    // Example with Resend (uncomment and configure):
-    /*
-    import { Resend } from 'resend'
-    const resend = new Resend(process.env.RESEND_API_KEY)
-    
-    await resend.contacts.create({
-      email: email,
-      audienceId: process.env.RESEND_AUDIENCE_ID!,
-    })
-    */
-
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  } catch (error) {
-    console.error('[Newsletter] Error:', error)
-    return new Response(JSON.stringify({ error: 'Subscription failed' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    })
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ error: "Invalid email" }, { status: 400 })
   }
+
+  try {
+    await subscribeEmail(email)
+  } catch (err) {
+    console.error("[Newsletter] Subscription failed:", err)
+    // Don't expose internal errors to the client
+  }
+
+  return NextResponse.json({ success: true })
 }

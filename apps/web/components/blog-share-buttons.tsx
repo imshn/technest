@@ -6,7 +6,7 @@ import { RiTwitterXLine, RiLinkedinBoxLine, RiLinksLine, RiCheckLine } from "@re
 export function BlogShareButtons({ title, slug }: { title: string; slug: string }) {
   const [copied, setCopied] = useState(false)
 
-  const url = `https://technest.dev/blog/${slug}`
+  const url = `https://technestsolutions.in/blog/${slug}`
   const encoded = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
 

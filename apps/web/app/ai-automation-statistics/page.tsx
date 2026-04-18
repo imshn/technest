@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     "multi-agent AI statistics",
     "enterprise AI adoption",
   ],
-  alternates: { canonical: "https://technest.dev/ai-automation-statistics" },
+  alternates: { canonical: "https://technestsolutions.in/ai-automation-statistics" },
   openGraph: {
     type: "article",
-    url: "https://technest.dev/ai-automation-statistics",
+    url: "https://technestsolutions.in/ai-automation-statistics",
     title: "AI Automation Statistics 2025 — 47 Data Points on ROI, Adoption & Cost Savings",
     description:
       "47 sourced statistics on AI automation ROI, adoption, costs, and market trends. Data for practitioners, analysts, and decision-makers.",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
 }
 
-const siteUrl = "https://technest.dev"
+const siteUrl = "https://technestsolutions.in"
 
 const jsonLd = {
   "@context": "https://schema.org",

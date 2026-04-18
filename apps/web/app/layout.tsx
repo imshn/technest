@@ -1,9 +1,11 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Analytics } from "@/components/analytics"
+import { Analytics, GTMNoScript } from "@/components/analytics"
 import { SchemaMarkup } from "@/components/schema"
 import { cn } from "@workspace/ui/lib/utils"
 
@@ -19,7 +21,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 })
 
-const siteUrl = "https://technest.dev"
+const siteUrl = "https://technestsolutions.in"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,28 +30,35 @@ export const metadata: Metadata = {
     template: "%s | TechNest",
   },
   description:
-    "TechNest is an AI-native digital agency that builds multi-agent systems, agentic workflows, N8n automations, SaaS platforms, web & mobile apps, and AI-powered marketing. Serving startups and enterprises globally.",
+    "AI-native agency building multi-agent systems, agentic workflows, N8n automation, SaaS, and web apps. Serving startups and enterprises in India, USA, UAE, and Europe.",
   keywords: [
-    "AI agency",
-    "multi AI agents for business",
+    // Core service terms
+    "AI automation agency",
+    "multi-agent AI systems",
     "agentic workflow development",
     "n8n workflow automation",
-    "AI automation agency",
     "SaaS development company",
     "custom AI agent development",
-    "digital transformation agency",
-    "AI-powered marketing agency",
+    // India targeting
+    "AI agency India",
+    "AI automation company India",
+    "SaaS development company India",
+    "software development agency Bangalore",
+    // Gulf targeting
+    "AI agency Dubai",
+    "AI automation UAE",
+    "software development agency Dubai",
+    "AI solutions Kuwait",
+    "tech agency Saudi Arabia",
+    // US/Europe targeting
+    "AI development agency USA",
     "hire AI development team",
     "enterprise AI solutions",
-    "business automation agency",
-    "machine learning development agency",
-    "AI consulting firm",
-    "software development agency",
-    "mobile app development agency",
-    "web app development agency",
-    "AI agency for startups",
-    "AI solutions for businesses",
-    "remote AI development team",
+    // Intent-based
+    "hire AI automation agency",
+    "agentic workflow development company",
+    "n8n vs zapier",
+    "multi agent AI system development",
   ],
   authors: [{ name: "TechNest", url: siteUrl }],
   creator: "TechNest",
@@ -99,19 +108,28 @@ export const metadata: Metadata = {
     languages: {
       "en-US": siteUrl,
       "en-IN": siteUrl,
+      "en-GB": siteUrl,
       "en-AE": siteUrl,
+      "en-SA": siteUrl,
       "en-KW": siteUrl,
+      "en-QA": siteUrl,
+      "en-DE": siteUrl,
+      "x-default": siteUrl,
     },
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ?? "",
   },
   other: {
-    "geo.region": "US",
-    "geo.placename": "United States",
-    "ICBM": "37.0902, -95.7129",
+    // Multi-region geo targeting — India, US, Gulf, Europe
+    "geo.region": "IN, US, AE, SA, KW, QA, GB, DE",
     "DC.language": "en",
     "DC.coverage": "Worldwide",
+    "DC.subject": "AI Automation, Software Development, SaaS, Multi-Agent AI",
+    // Structured citations for AI search engines
+    "citation_author": "Shaan",
+    "citation_publisher": "TechNest",
+    "citation_public_url": "https://technestsolutions.in",
   },
 }
 
@@ -133,8 +151,14 @@ export default function RootLayout({
         <SchemaMarkup />
       </head>
       <body>
+        {/* GTM noscript fallback — must be first child of body */}
+        <GTMNoScript />
         <ThemeProvider>{children}</ThemeProvider>
+        {/* Analytics — Google Tag Manager / GA4 / Google Ads */}
         <Analytics />
+        {/* Vercel Analytics + Core Web Vitals */}
+        <VercelAnalytics />
+        <SpeedInsights />
       </body>
     </html>
   )

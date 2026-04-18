@@ -157,7 +157,7 @@ export function Services() {
                 "@type": "ListItem",
                 "position": idx + 1,
                 "name": `${svc.title}: ${svc.tagline}`,
-                "item": `https://technest.dev/services/${svc.slug}`,
+                "item": `https://technestsolutions.in/services/${svc.slug}`,
               })),
             }),
           }}

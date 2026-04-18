@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     "AI automation ROI",
     "software development agency results",
   ],
-  alternates: { canonical: "https://technest.dev/case-studies" },
+  alternates: { canonical: "https://technestsolutions.in/case-studies" },
   openGraph: {
     type: "website",
-    url: "https://technest.dev/case-studies",
+    url: "https://technestsolutions.in/case-studies",
     title: "Case Studies — Real AI Automation Results | TechNest",
     description: "How TechNest helped startups cut 80% of manual work, launch MVPs in 6 weeks, and reduce automation costs by 85%.",
     siteName: "TechNest",

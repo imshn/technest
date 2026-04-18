@@ -14,18 +14,14 @@ const SplineScene = dynamic(() => import('./SplineScene'), {
 export function Hero() {
   return (
     <section className="min-h-dvh w-full relative overflow-hidden flex items-center">
-      {/* Spline 3D background */}
-      <div className="absolute inset-0 z-0 w-full h-full">
-        <Suspense fallback={<div className="bg-slate-900 w-full h-full" />}>
-          <SplineScene
-            scene="https://prod.spline.design/NDUC8hY13R2TOxGa/scene.splinecode"
-          />
-        </Suspense>
-      </div>
-      {/* Thin wash so text stays readable */}
-      <div className="absolute inset-0 bg-background/30 pointer-events-none z-1" />
+      {/* Bottom vignette — grounds the section */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-1"
+        style={{ background: "linear-gradient(to top, var(--color-background), transparent)" }}
+      />
+
+      {/* Subtle grid — left side only */}
       <div
-        className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04] z-2"
+        className="absolute inset-0 opacity-[0.022] dark:opacity-[0.035] z-2 pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
@@ -38,24 +34,36 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_540px] gap-12 xl:gap-20 items-center min-h-[calc(100dvh-160px)]">
 
           {/* LEFT */}
-          <div className="flex flex-col gap-8" style={{ animation: "slide-up-fade 0.7s cubic-bezier(0.16,1,0.3,1) both" }}>
-            <div className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-full border border-primary/25 bg-primary/6 text-primary text-xs font-medium tracking-wide">
+          <div className="flex flex-col gap-7" style={{ animation: "slide-up-fade 0.7s cubic-bezier(0.16,1,0.3,1) both" }}>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-full border border-primary/30 bg-primary/8 text-primary text-xs font-medium tracking-wide"
+              style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-primary" style={{ animation: "pulse-dot 2s ease-in-out infinite" }} />
-              2 client spots open in Q2 · AI-Native Agency
+              2 client spots open in Q2 &middot; AI-Native Agency
             </div>
 
-            <h1 className="text-5xl md:text-6xl xl:text-[72px] font-semibold tracking-[-0.03em] leading-[1.02] text-foreground">
+            {/* Headline */}
+            <h1 className="text-[52px] md:text-[64px] xl:text-[76px] font-semibold tracking-[-0.04em] leading-[0.97] text-foreground">
               Stop Losing Hours<br />
-              to Work <span className="text-primary">AI Should</span><br />
+              to Work{" "}
+              <span
+                className="text-primary"
+                style={{ textShadow: "0 0 40px color-mix(in srgb, var(--color-primary) 35%, transparent)" }}
+              >
+                AI Should
+              </span>
+              <br />
               Be Doing.
             </h1>
 
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-[52ch]">
-              We build multi-agent AI systems, custom automations, and full-stack products
-              that replace manual workflows — so your team ships faster and your business
-              scales without proportionally growing headcount.
+            {/* Body */}
+            <p className="text-[15px] md:text-base text-muted-foreground leading-[1.7] max-w-[46ch]">
+              We build multi-agent AI systems, custom automations, and full-stack
+              products that replace manual workflows — so your team ships faster
+              and your business scales without proportionally growing headcount.
             </p>
 
+            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
               <CalendlyButton
                 label="Book a Free Strategy Call"
@@ -66,16 +74,17 @@ export function Hero() {
               />
               <a
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-foreground rounded-md border border-border hover:bg-muted/60 transition-all duration-150 active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-foreground rounded-md border border-border/80 bg-background/60 backdrop-blur-sm hover:bg-muted/60 transition-all duration-150 active:scale-[0.98]"
               >
                 See What We Build
               </a>
             </div>
 
-            <p className="text-xs text-muted-foreground">
-              Free 30-min call · No pitch deck · Just clarity on your use case
+            <p className="text-xs text-muted-foreground/70 tracking-wide">
+              Free 30-min call &nbsp;&middot;&nbsp; No pitch deck &nbsp;&middot;&nbsp; Just clarity on your use case
             </p>
 
+            {/* Social proof */}
             <div className="flex items-center gap-4 pt-1">
               <div className="flex -space-x-2">
                 {["3d4e5f", "6e7f8a", "9f0a1b", "2c3d4e"].map((seed, i) => (
@@ -96,14 +105,25 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — terminal */}
+          {/* RIGHT — spline + terminal */}
           <div
             className="relative hidden lg:flex flex-col gap-4"
             style={{ animation: "scale-in 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
           >
+            {/* Spline 3D model — dark contained card */}
             <div
-              className="relative rounded-2xl border border-border/70 bg-card overflow-hidden"
-              style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 60px -20px rgba(0,0,0,0.12)" }}
+              className="pointer-events-none"
+            >
+              <Suspense fallback={<div className="w-full h-full bg-zinc-950" />}>
+                <SplineScene
+                  scene="https://prod.spline.design/NDUC8hY13R2TOxGa/scene.splinecode"
+                />
+              </Suspense>
+            </div>
+
+            <div
+              className="relative rounded-2xl border border-border/50 bg-card/85 backdrop-blur-md overflow-hidden"
+              style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 64px -16px rgba(0,0,0,0.18)" }}
             >
               <div className="flex items-center gap-2 px-4 py-3 border-b border-border/60 bg-muted/30">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
@@ -141,7 +161,7 @@ export function Hero() {
                 { label: "Uptime", value: "99.7%" },
                 { label: "Clients", value: "31" },
               ].map((m) => (
-                <div key={m.label} className="rounded-xl border border-border/60 bg-card/80 backdrop-blur p-3.5 text-center" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)" }}>
+                <div key={m.label} className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-md p-3.5 text-center" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)" }}>
                   <p className="text-lg font-semibold tracking-tight text-foreground">{m.value}</p>
                   <p className="text-[11px] text-muted-foreground mt-0.5">{m.label}</p>
                 </div>

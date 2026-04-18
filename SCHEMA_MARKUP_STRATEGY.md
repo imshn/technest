@@ -36,7 +36,7 @@ This document outlines TechNest's schema.org implementation strategy to enhance 
   "provider": {
     "@type": "Organization",
     "name": "TechNest",
-    "url": "https://technest.dev"
+    "url": "http://technestsolutions.in/"
   },
   "areaServed": "Global",
   "serviceType": "AI Development",
@@ -58,7 +58,7 @@ This document outlines TechNest's schema.org implementation strategy to enhance 
   "@type": "ComparisonChart",
   "headline": "[Service] vs TechNest",
   "description": "Detailed comparison...",
-  "url": "https://technest.dev/compare/upwork",
+  "url": "http://technestsolutions.incompare/upwork",
   "itemCompared": [
     {
       "@type": "SoftwareApplication",
@@ -68,7 +68,7 @@ This document outlines TechNest's schema.org implementation strategy to enhance 
     {
       "@type": "Organization",
       "name": "TechNest",
-      "url": "https://technest.dev"
+      "url": "http://technestsolutions.in/"
     }
   ],
   "reviewedService": {
@@ -86,9 +86,9 @@ This document outlines TechNest's schema.org implementation strategy to enhance 
   "@type": "LocalBusiness",
   "name": "TechNest",
   "description": "AI, automation, and web development agency",
-  "url": "https://technest.dev",
+  "url": "http://technestsolutions.in/",
   "telephone": "[phone if available]",
-  "email": "hello@technest.dev",
+  "email": "hello@technestsolutions.in",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "[if applicable]",
@@ -131,7 +131,7 @@ Use `relatedLink` to signal semantic connections:
 {
   "@context": "https://schema.org",
   "@type": "Thing",
-  "url": "https://technest.dev/blog/methodology-post",
+  "url": "http://technestsolutions.inblog/methodology-post",
   "name": "Blog Post Title"
 }
 ```
@@ -156,7 +156,7 @@ Use `mentions` to link services used:
     {
       "@type": "Thing",
       "name": "Multi-Agent AI Systems",
-      "url": "https://technest.dev/services/multi-agent-ai-systems"
+      "url": "http://technestsolutions.inservices/multi-agent-ai-systems"
     }
   ]
 }
@@ -231,7 +231,7 @@ graphify query "what schema types are used in the website?"
 
 ```bash
 # Verify schema structure
-curl -s 'https://technest.dev/blog/[slug]' | jq '.[] | select(."@context")'
+curl -s 'http://technestsolutions.inblog/[slug]' | jq '.[] | select(."@context")'
 
 # Test with Google's Rich Results
 # 1. Visit https://search.google.com/test/rich-results

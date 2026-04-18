@@ -53,7 +53,7 @@ const comparisons: Record<string, CompareData> = {
     intro:
       "Toptal provides vetted senior developers on a contract basis. TechNest provides a complete project team that owns delivery from architecture to launch. Different models for different needs.",
     rows: [
-      { feature: "Minimum engagement cost", technest: "From $5,000 (project-based)", competitor: "$10,000+ (160 hours minimum)" },
+      { feature: "Minimum engagement cost", technest: "From $1000 (project-based)", competitor: "$10,000+ (160 hours minimum)" },
       { feature: "Team structure", technest: "Dedicated engineer + PM", competitor: "Individual contractors" },
       { feature: "Architecture ownership", technest: "Agency-owned, full accountability", competitor: "You direct the engagement" },
       { feature: "AI/automation specialists", technest: "Core focus", competitor: "General software engineers" },
@@ -95,7 +95,7 @@ const comparisons: Record<string, CompareData> = {
     intro:
       "Accenture serves Fortune 500 companies with large teams and long timelines. TechNest moves faster, costs less, and ships production-grade AI systems and software for growth-stage companies.",
     rows: [
-      { feature: "Minimum project budget", technest: "From $5,000", competitor: "$50,000–$500,000+" },
+      { feature: "Minimum project budget", technest: "From $1000", competitor: "$50,000–$500,000+" },
       { feature: "Time to first deliverable", technest: "2 weeks", competitor: "3–6 months" },
       { feature: "Team size and overhead", technest: "Lean, dedicated team", competitor: "Large team with significant overhead" },
       { feature: "AI automation focus", technest: "Core specialization", competitor: "One of hundreds of practice areas" },
@@ -140,10 +140,27 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   const { slug } = await props.params
   const data = comparisons[slug]
   if (!data) return {}
+  const canonical = `https://technestsolutions.in/compare/${slug}`
   return {
     title: data.metaTitle,
     description: data.metaDescription,
-    alternates: { canonical: `https://technest.dev/compare/${slug}` },
+    alternates: { canonical },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: data.metaTitle,
+      description: data.metaDescription,
+      siteName: "TechNest",
+      images: [{ url: "https://technestsolutions.in/og-image.png", width: 1200, height: 630, alt: "TechNest — AI Automation Agency" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.metaTitle,
+      description: data.metaDescription,
+      site: "@technestdev",
+      creator: "@technestdev",
+      images: ["https://technestsolutions.in/og-image.png"],
+    },
   }
 }
 
@@ -170,16 +187,16 @@ export default async function ComparePage(props: { params: Promise<{ slug: strin
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "@id": `https://technest.dev/compare/${slug}`,
+            "@id": `https://technestsolutions.in/compare/${slug}`,
             name: data.headline,
             description: data.metaDescription,
-            url: `https://technest.dev/compare/${slug}`,
+            url: `https://technestsolutions.in/compare/${slug}`,
             breadcrumb: {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://technest.dev" },
-                { "@type": "ListItem", position: 2, name: "Compare", item: "https://technest.dev/compare" },
-                { "@type": "ListItem", position: 3, name: data.headline, item: `https://technest.dev/compare/${slug}` },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://technestsolutions.in" },
+                { "@type": "ListItem", position: 2, name: "Compare", item: "https://technestsolutions.in/compare" },
+                { "@type": "ListItem", position: 3, name: data.headline, item: `https://technestsolutions.in/compare/${slug}` },
               ],
             },
             mainEntity: {
@@ -198,7 +215,7 @@ export default async function ComparePage(props: { params: Promise<{ slug: strin
       <main className="min-h-dvh pt-24 pb-24">
         <div className="max-w-350 mx-auto px-6 md:px-10">
           {/* Header */}
-          <div className="max-w-[640px] py-16">
+          <div className="max-w-160 py-16">
             <p className="text-xs font-medium text-primary tracking-widest uppercase mb-3">Comparison</p>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-foreground mb-3">
               {data.headline}
@@ -258,13 +275,13 @@ export default async function ComparePage(props: { params: Promise<{ slug: strin
           </div>
 
           {/* Verdict */}
-          <div className="rounded-2xl border border-border/60 bg-muted/20 p-8 mb-16 max-w-[720px]">
+          <div className="rounded-2xl border border-border/60 bg-muted/20 p-8 mb-16 max-w-180">
             <p className="text-xs font-semibold text-primary tracking-widest uppercase mb-3">Verdict</p>
             <p className="text-base text-foreground leading-relaxed">{data.verdict}</p>
           </div>
 
           {/* CTA */}
-          <div className="max-w-[480px]">
+          <div className="max-w-120">
             <h2 className="text-2xl font-semibold text-foreground mb-3">
               See if TechNest is the right fit
             </h2>

@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next"
-import { blogPosts } from "@/components/blog-preview"
+import { getPosts } from "@/lib/blog-store"
 import { caseStudies } from "@/components/case-studies-preview"
 
-const siteUrl = "https://technest.dev"
+const siteUrl = "https://technestsolutions.in"
 
 const serviceSlugs = [
   "multi-agent-ai-systems",
@@ -16,91 +16,42 @@ const serviceSlugs = [
   "digital-marketing",
 ]
 
-const compareSlugs = [
-  "upwork",
-  "toptal",
-  "fiverr",
-  "accenture",
-  "freelancer",
-]
+const compareSlugs = ["upwork", "toptal", "fiverr", "accenture", "freelancer"]
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
-
-  // Homepage
-  const homepage = {
-    url: siteUrl,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 1.0,
-  }
-
-  // Blog index
-  const blogIndex = {
-    url: `${siteUrl}/blog`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }
-
-  // Individual blog posts
-  const blogPages = blogPosts.map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
-
-  // Case studies index
-  const caseStudiesIndex = {
-    url: `${siteUrl}/case-studies`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-  }
-
-  // Individual case studies
-  const caseStudyPages = caseStudies.map((study) => ({
-    url: `${siteUrl}/case-studies/${study.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }))
-
-  // Service pages
-  const servicePages = serviceSlugs.map((slug) => ({
-    url: `${siteUrl}/services/${slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }))
-
-  // Comparison pages
-  const comparePages = compareSlugs.map((slug) => ({
-    url: `${siteUrl}/compare/${slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
-
-  // Standalone high-value pages (link-bait / resources)
-  const resourcePages = [
-    {
-      url: `${siteUrl}/ai-automation-statistics`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-  ]
+  const blogPosts = await getPosts("published")
 
   return [
-    homepage,
-    blogIndex,
-    ...blogPages,
-    caseStudiesIndex,
-    ...caseStudyPages,
-    ...servicePages,
-    ...comparePages,
-    ...resourcePages,
+    { url: siteUrl, lastModified: now, changeFrequency: "daily", priority: 1.0 },
+    { url: `${siteUrl}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    ...blogPosts.map((p) => ({
+      url: `${siteUrl}/blog/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    { url: `${siteUrl}/case-studies`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    ...caseStudies.map((s) => ({
+      url: `${siteUrl}/case-studies/${s.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+    { url: `${siteUrl}/services`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    ...serviceSlugs.map((slug) => ({
+      url: `${siteUrl}/services/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+    { url: `${siteUrl}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    ...compareSlugs.map((slug) => ({
+      url: `${siteUrl}/compare/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    { url: `${siteUrl}/ai-automation-statistics`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
   ]
 }

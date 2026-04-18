@@ -16,7 +16,6 @@ import { Footer } from "@/components/footer"
 import { CalendlyButton } from "@/components/calendly-button"
 import { RelatedContent, getRelatedContent } from "@/components/related-content"
 import { caseStudies } from "@/components/case-studies-preview"
-import { blogPosts } from "@/components/blog-preview"
 import { RiArrowRightLine } from "@remixicon/react"
 
 type ServiceData = {
@@ -346,10 +345,27 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   const { slug } = await props.params
   const svc = services[slug]
   if (!svc) return {}
+  const canonical = `https://technestsolutions.in/services/${slug}`
   return {
     title: svc.metaTitle,
     description: svc.metaDescription,
-    alternates: { canonical: `https://technest.dev/services/${slug}` },
+    alternates: { canonical },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: svc.metaTitle,
+      description: svc.metaDescription,
+      siteName: "TechNest",
+      images: [{ url: "https://technestsolutions.in/og-image.png", width: 1200, height: 630, alt: "TechNest — AI Automation Agency" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: svc.metaTitle,
+      description: svc.metaDescription,
+      site: "@technestdev",
+      creator: "@technestdev",
+      images: ["https://technestsolutions.in/og-image.png"],
+    },
   }
 }
 
@@ -369,11 +385,11 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            "@id": `https://technest.dev/services/${slug}`,
+            "@id": `https://technestsolutions.in/services/${slug}`,
             name: svc.title,
             description: svc.description,
-            url: `https://technest.dev/services/${slug}`,
-            provider: { "@id": "https://technest.dev/#organization" },
+            url: `https://technestsolutions.in/services/${slug}`,
+            provider: { "@id": "https://technestsolutions.in/#organization" },
             serviceType: svc.title,
             areaServed: "Worldwide",
           }),
@@ -400,9 +416,9 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://technest.dev" },
-              { "@type": "ListItem", position: 2, name: "Services", item: "https://technest.dev/services" },
-              { "@type": "ListItem", position: 3, name: svc.title, item: `https://technest.dev/services/${slug}` },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://technestsolutions.in" },
+              { "@type": "ListItem", position: 2, name: "Services", item: "https://technestsolutions.in/services" },
+              { "@type": "ListItem", position: 3, name: svc.title, item: `https://technestsolutions.in/services/${slug}` },
             ],
           }),
         }}
@@ -410,7 +426,7 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
       <main className="min-h-dvh pt-24 pb-24">
         <div className="max-w-350 mx-auto px-6 md:px-10">
           {/* Header */}
-          <div className="max-w-[640px] py-16">
+          <div className="max-w-160 py-16">
             <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center text-primary mb-6">
               <Icon size={20} />
             </div>

@@ -1,8 +1,3 @@
-"use client"
-
-import { useState } from "react"
-import { RiAddLine, RiSubtractLine } from "@remixicon/react"
-
 const faqs = [
   {
     q: "What types of businesses do you typically work with?",
@@ -30,7 +25,7 @@ const faqs = [
   },
   {
     q: "How do you price projects — fixed cost or hourly?",
-    a: "Fixed-scope engagements only. We define deliverables upfront and price against outcomes, not hours. This means no invoice surprises and no incentive to pad timelines. Project minimums start at $5,000 USD.",
+    a: "Fixed-scope engagements only. We define deliverables upfront and price against outcomes, not hours. This means no invoice surprises and no incentive to pad timelines. Project minimums start at $1000 USD.",
   },
   {
     q: "Can you integrate AI agents with our existing tools like HubSpot, Salesforce, or Notion?",
@@ -39,8 +34,6 @@ const faqs = [
 ]
 
 export function FAQ() {
-  const [open, setOpen] = useState<number | null>(null)
-
   return (
     <section id="faq" className="py-24 md:py-32 border-t border-border/60">
       <div className="max-w-350 mx-auto px-6 md:px-10">
@@ -57,26 +50,19 @@ export function FAQ() {
 
           <div className="flex flex-col divide-y divide-border/60">
             {faqs.map((faq, i) => (
-              <div key={i} className="py-5">
-                <button
-                  onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-start justify-between gap-4 text-left group"
-                  aria-expanded={open === i}
-                >
+              <details key={i} className="group py-5 [&[open]>summary>span:last-child]:rotate-45">
+                <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
                   <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-150 pr-2">
                     {faq.q}
                   </span>
-                  <span className="shrink-0 w-5 h-5 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground mt-0.5">
-                    {open === i ? <RiSubtractLine size={12} /> : <RiAddLine size={12} />}
+                  <span className="shrink-0 w-5 h-5 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground mt-0.5 transition-transform duration-200">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
                   </span>
-                </button>
-                <div
-                  className="overflow-hidden transition-all duration-300"
-                  style={{ maxHeight: open === i ? "400px" : "0px", opacity: open === i ? 1 : 0 }}
-                >
-                  <p className="text-sm text-muted-foreground leading-relaxed pt-4 pr-8">{faq.a}</p>
-                </div>
-              </div>
+                </summary>
+                <p className="text-sm text-muted-foreground leading-relaxed pt-4 pr-8">{faq.a}</p>
+              </details>
             ))}
           </div>
         </div>

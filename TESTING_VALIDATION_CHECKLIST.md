@@ -224,7 +224,7 @@ Check documentation accuracy:
 ### Tools for Benchmarking
 ```bash
 # Lighthouse
-npm run lighthouse -- https://technest.dev/blog/post-1
+npm run lighthouse -- http://technestsolutions.inblog/post-1
 
 # WebPageTest
 # https://www.webpagetest.org

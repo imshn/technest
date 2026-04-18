@@ -323,10 +323,10 @@ graphify query "find all internal links between services and case studies"
 
 ### Key URLs
 ```
-Homepage: https://technest.dev
-Services Index: https://technest.dev/services
-Blog Index: https://technest.dev/blog
-Case Studies Index: https://technest.dev/case-studies
+Homepage: http://technestsolutions.in/
+Services Index: http://technestsolutions.inservices
+Blog Index: http://technestsolutions.inblog
+Case Studies Index: http://technestsolutions.incase-studies
 ```
 
 ---
