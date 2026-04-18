@@ -7,7 +7,7 @@
   "regions": ["bom1"],
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "has": [{ "type": "host", "value": "www.technestsolutions.in" }],
       "destination": "https://technestsolutions.in/:path*",
       "permanent": true
