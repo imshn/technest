@@ -113,7 +113,7 @@ export function Footer() {
               ))}
               <li>
                 <a
-                  href="/#contact"
+                  href="/contact"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
                 >
                   Contact
