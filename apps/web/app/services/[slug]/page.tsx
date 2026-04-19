@@ -14,8 +14,6 @@ import {
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CalendlyButton } from "@/components/calendly-button"
-import { RelatedContent, getRelatedContent } from "@/components/related-content"
-import { caseStudies } from "@/components/case-studies-preview"
 import { RiArrowRightLine } from "@remixicon/react"
 
 type ServiceData = {
@@ -484,21 +482,6 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
                 </div>
               </div>
 
-              {/* Related content */}
-              <RelatedContent
-                items={
-                  caseStudies
-                    .filter((cs) => cs.services.includes(svc.title))
-                    .slice(0, 1)
-                    .map((cs) => ({
-                      title: cs.title,
-                      href: `/case-studies/${cs.slug}`,
-                      type: "case-study" as const,
-                      description: cs.result,
-                    }))
-                }
-                title="Proven Case Studies"
-              />
             </div>
 
             {/* Sidebar */}

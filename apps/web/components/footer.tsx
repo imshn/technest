@@ -23,7 +23,6 @@ const companyLinks = [
   { label: "Results", href: "/#testimonials" },
   { label: "FAQ", href: "/#faq" },
   { label: "Blog", href: "/blog" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "AI Automation Statistics", href: "/ai-automation-statistics" },
 ]
 
@@ -114,7 +113,7 @@ export function Footer() {
               ))}
               <li>
                 <a
-                  href="mailto:shahnawaz28april@gmail.com"
+                  href="mailto:shaan@technestsolutions.in"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150"
                 >
                   Contact

@@ -8,7 +8,6 @@ import { Services } from "@/components/services"
 import { Process } from "@/components/process"
 import { Testimonials } from "@/components/testimonials"
 import { BlogPreview } from "@/components/blog-preview"
-import { CaseStudiesPreview } from "@/components/case-studies-preview"
 import { NewsletterCTA } from "@/components/newsletter-cta"
 import { FAQ } from "@/components/faq"
 import { CTA } from "@/components/cta"
@@ -27,7 +26,6 @@ export default function Page() {
       <Process />
       <Testimonials />
       <BlogPreview />
-      <CaseStudiesPreview />
       <NewsletterCTA />
       <FAQ />
       <CTA />

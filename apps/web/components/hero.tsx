@@ -73,10 +73,10 @@ export function Hero() {
                 className="flex-row-reverse"
               />
               <a
-                href="#services"
+                href="#contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-foreground rounded-md border border-border/80 bg-background/60 backdrop-blur-sm hover:bg-muted/60 transition-all duration-150 active:scale-[0.98]"
               >
-                See What We Build
+                Send Us a Brief
               </a>
             </div>
 

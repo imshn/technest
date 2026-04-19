@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "slug": "post-1",
+      "title": "How to Build a Multi-Agent AI System That Actually Works in Production",
+      "seoExcerpt": "Most multi-agent demos fall apart in production. Learn the architecture — orchestration, memory, tool routing, and failure handling — that makes multi-agent AI systems reliable at scale.",
+      "excerpt": "Most multi-agent demos fall apart in production. Here's the architecture — orchestration, memory, tool routing, and failure handling — that makes them reliable.",
+      "date": "Apr 10, 2025",
+      "readTime": "8 min read",
+      "tag": "AI Automation",
+      "author": "Shaan",
+      "status": "published",
+      "featuredImage": null,
+      "imageUrl": null,
+      "imageAlt": "Multi-agent AI system architecture diagram",
+      "content": "<p>Multi-agent AI systems are having a moment. Every vendor demo shows agents collaborating seamlessly, calling tools, and producing results while a human watches in awe. Then you try to deploy one and discover the demo was hiding two weeks of duct tape.</p>\n<p>We've built multi-agent systems for fintech, e-commerce, and SaaS companies — systems that run 24/7 with no babysitting. Here's what the production architecture actually looks like.</p>\n<h2>Why Most Multi-Agent Demos Fail in Production</h2>\n<p>The demo problem is simple: demos are deterministic. The demonstrator controls the inputs, skips the edge cases, and hits replay if something breaks. Production is the opposite. Your agents will encounter malformed inputs, API timeouts, ambiguous instructions, and user requests that fall outside the training distribution.</p>\n<p>The three failure modes we see most often:</p>\n<ul><li><strong>Runaway loops</strong> — Agent A triggers Agent B which re-triggers Agent A. Without a cycle-detection layer, you're burning tokens and getting nothing.</li><li><strong>Silent failures</strong> — An agent returns a plausible-looking result that's wrong. Downstream agents trust it and the error propagates.</li><li><strong>Context collapse</strong> — Agents share a context window. As the conversation grows, early instructions get truncated.</li></ul>\n<h2>The Architecture That Works</h2>\n<h3>1. Orchestrator–Worker Split</h3>\n<p>Every production system we build has a clear orchestrator–worker hierarchy. The orchestrator never executes tasks — it decomposes goals, assigns subtasks, and validates outputs before passing them downstream.</p>\n<h3>2. Explicit State Management</h3>\n<p>Don't rely on the context window for state. We use a shared state object — typically a typed Python dict or a Redis hash — that every agent reads from and writes to.</p>\n<h3>3. Tool Registry with Timeouts</h3>\n<p>Every tool in the system is registered with a maximum execution time and a retry policy. If a tool doesn't return within the timeout, the agent gets a structured error — not a hanging context.</p>\n<pre><code>class SafeTool(BaseTool):\n    timeout: int = 10\n    max_retries: int = 2\n\n    def _run(self, *args, **kwargs):\n        for attempt in range(self.max_retries + 1):\n            try:\n                return self._execute(*args, **kwargs)\n            except TimeoutError:\n                if attempt == self.max_retries:\n                    return {\"error\": \"Tool timed out\", \"tool\": self.name}\n                time.sleep(2 ** attempt)</code></pre>\n<h3>4. Memory That Scales</h3>\n<p>For short-term memory, we use a rolling summary — the orchestrator compresses the context every N steps. For long-term, we use a vector store (Pinecone or Qdrant) with namespace isolation per user or workflow.</p>\n<h2>The Bottom Line</h2>\n<p>Multi-agent systems are genuinely powerful. But the gap between a demo and a production deployment is larger than most people expect. If you're building one and want a second opinion, <a href=\"/services/multi-agent-ai-systems\">we build these for a living</a>.</p>"
+    },
+    {
+      "slug": "post-2",
+      "title": "N8n vs Zapier vs Make: The Honest Comparison for 2025",
+      "seoExcerpt": "We've run N8n, Zapier, and Make at scale across production environments. This honest breakdown covers pricing, limits, self-hosting costs, and the specific cases where each tool wins.",
+      "excerpt": "We've run all three at scale. This breakdown covers pricing, limits, self-hosting, and the specific cases where each tool wins — and where it breaks.",
+      "date": "Apr 3, 2025",
+      "readTime": "6 min read",
+      "tag": "N8n",
+      "author": "Shaan",
+      "status": "published",
+      "featuredImage": null,
+      "imageUrl": null,
+      "imageAlt": "Workflow automation tools comparison",
+      "content": "<p>We use all three. Zapier for quick client demos, Make for moderately complex flows, and N8n for everything that actually needs to scale. After running each tool across multiple production environments, here's the honest breakdown.</p>\n<h2>The Short Answer</h2>\n<p>If you're running fewer than 1,000 tasks per month and need something set up in an afternoon: use Zapier. If you need complex multi-branch logic but don't want to manage infrastructure: use Make. If you care about cost at scale, data privacy, or need custom code execution: use N8n.</p>\n<h2>Pricing: Where Zapier Breaks Down</h2>\n<ul><li><strong>Zapier Professional (50K tasks/mo):</strong> ~$800/month</li><li><strong>Make Pro (50K operations/mo):</strong> ~$180/month</li><li><strong>N8n self-hosted (50K executions/mo):</strong> ~$40–80/month VPS</li><li><strong>N8n Cloud (50K executions/mo):</strong> ~$50/month</li></ul>\n<h2>Data Privacy: N8n's Decisive Advantage</h2>\n<p>Zapier and Make are SaaS platforms — your data passes through their servers. N8n self-hosted runs entirely on your infrastructure. No third-party servers touch your data.</p>\n<h2>Our Recommendation</h2>\n<p>Start with the tool that gets your first automation live fastest. When you hit a limit — cost, complexity, or data privacy — migrate to N8n. If you already know you're going to run high-volume automations, <a href=\"/services/n8n-workflow-automation\">start with N8n</a>.</p>"
+    },
+    {
+      "slug": "post-3",
+      "title": "SaaS MVP in 6 Weeks: The Tech Stack and Process We Use Every Time",
+      "seoExcerpt": "Next.js, Supabase, Stripe, and a CI/CD pipeline you can hand off. The exact tech stack and week-by-week process TechNest uses to ship production SaaS from zero to launch.",
+      "excerpt": "Next.js, Supabase, Stripe, and a deployment pipeline you can hand off. This is the exact stack and week-by-week process we use to ship production SaaS from zero.",
+      "date": "Mar 25, 2025",
+      "readTime": "7 min read",
+      "tag": "SaaS",
+      "author": "Shaan",
+      "status": "published",
+      "featuredImage": null,
+      "imageUrl": null,
+      "imageAlt": "SaaS development process and tech stack",
+      "content": "<p>We've launched SaaS MVPs with 4-week timelines that shipped nothing useful and 12-week timelines that shipped products people actually paid for. The difference isn't the timeline — it's the decisions made in week one.</p>\n<h2>The Stack</h2>\n<ul><li><strong>Framework:</strong> Next.js 14+ with App Router</li><li><strong>Database + Auth:</strong> Supabase — Postgres with row-level security</li><li><strong>Payments:</strong> Stripe — subscriptions, usage-based billing, customer portal</li><li><strong>Styling:</strong> Tailwind CSS + shadcn/ui</li><li><strong>Deployment:</strong> Vercel + Supabase Cloud</li><li><strong>Email:</strong> Resend with React Email templates</li><li><strong>Analytics:</strong> PostHog</li></ul>\n<h2>The 6-Week Process</h2>\n<h3>Week 1: Architecture and Data Model</h3>\n<p>The single most important week. We spend it answering: What is the core entity? What does multi-tenancy look like? What is the billing model? Changing a data model in week 4 is expensive. Changing it in week 1 is free.</p>\n<h3>Week 2: Core Infrastructure</h3>\n<p>Supabase setup with RLS policies, auth flows, Stripe subscription creation, webhook handling, email setup, and CI/CD pipeline. By end of week 2, a test user can create an account and be billed.</p>\n<h3>Weeks 3–5: Features + Polish</h3>\n<p>Core feature set → empty states, error states, mobile responsiveness audit, performance profiling, accessibility basics.</p>\n<h3>Week 6: Deployment and Handoff</h3>\n<p>Custom domain, environment audit, backup configuration, full code walkthrough, documentation, and 100% IP transfer. If you're building a SaaS, <a href=\"/services/saas-platform-development\">book a free 30-minute call</a>.</p>"
+    }
+  ]
+}

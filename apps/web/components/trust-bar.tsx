@@ -1,20 +1,20 @@
-import { RiShieldCheckLine, RiFileCopyLine, RiTeamLine, RiCalendarCheckLine } from "@remixicon/react"
+import { RiTeamLine, RiCalendarCheckLine, RiTimeLine, RiLightbulbLine } from "@remixicon/react"
 
 const signals = [
   {
-    icon: RiShieldCheckLine,
-    title: "NDA on Day One",
-    body: "Every engagement starts with a signed NDA. Your idea, data, and business logic stay private.",
+    icon: RiLightbulbLine,
+    title: "Free Strategy Call",
+    body: "30 minutes to map your highest-ROI automation opportunity. No pitch, no pressure — just a concrete plan.",
   },
   {
-    icon: RiFileCopyLine,
-    title: "100% IP Ownership",
-    body: "You own the code, the models, the infrastructure. No licensing, no lock-in, no strings.",
+    icon: RiTimeLine,
+    title: "First Build in 2 Weeks",
+    body: "Most clients have a working prototype in their hands within 14 days of kickoff. We move fast.",
   },
   {
     icon: RiTeamLine,
     title: "Dedicated Team",
-    body: "A senior engineer and project lead assigned to your project — not rotated between 12 clients.",
+    body: "A senior engineer and project lead on your project — not shared across 12 clients.",
   },
   {
     icon: RiCalendarCheckLine,

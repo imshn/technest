@@ -364,15 +364,6 @@ export default function AIAutomationStatisticsPage() {
                   N8n vs Zapier vs Make: The Honest 2025 Comparison
                 </p>
               </Link>
-              <Link
-                href="/case-studies/case-study-3"
-                className="group rounded-2xl border border-border/60 bg-card p-5 hover:border-primary/40 transition-colors"
-              >
-                <p className="text-xs font-medium text-primary mb-2">Case Study</p>
-                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-snug">
-                  How We Cut Automation Costs 85% vs Zapier
-                </p>
-              </Link>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import { RiArrowRightLine, RiCalendarLine } from "@remixicon/react"
 import { CalendlyButton } from "@/components/calendly-button"
+import { ContactForm } from "@/components/contact-form"
 
 const industries = [
   "SaaS", "Fintech", "E-commerce", "Healthcare", "Legal Tech",
@@ -8,7 +9,7 @@ const industries = [
 
 export function CTA() {
   return (
-    <section className="py-24 md:py-32 border-t border-border/60 bg-zinc-950 dark:bg-zinc-950">
+    <section id="contact" className="py-24 md:py-32 border-t border-border/60 bg-zinc-950 dark:bg-zinc-950">
       <div className="max-w-350 mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-20 items-start">
           <div className="flex flex-col gap-8">
@@ -73,24 +74,7 @@ export function CTA() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 flex items-start gap-4">
-              <div className="w-8 h-8 rounded-md bg-primary/15 flex items-center justify-center text-primary shrink-0">
-                <RiArrowRightLine size={15} />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-white mb-1">Prefer async?</p>
-                <p className="text-xs text-zinc-400">
-                  Email{" "}
-                  <a
-                    href="mailto:shahnawaz28april@gmail.com"
-                    className="text-primary hover:text-primary/80 transition-colors"
-                  >
-                    shahnawaz28april@gmail.com
-                  </a>{" "}
-                  with a brief description of your project.
-                </p>
-              </div>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>
