@@ -128,7 +128,8 @@ function serializePost(data: Partial<PostData>): Record<string, unknown> {
 
 export async function getPosts(status?: "all" | "published"): Promise<Post[]> {
   const query = status === "all" ? "?status=all" : ""
-  const rows = await apiFetch<ApiPostRow[]>(`/blog${query}`)
+  const response = await apiFetch<ApiPostRow[] | { data: ApiPostRow[] }>(`/blog${query}`)
+  const rows = Array.isArray(response) ? response : (response.data ?? [])
   return rows.map(rowToPost)
 }
 
