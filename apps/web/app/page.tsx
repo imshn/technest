@@ -1,4 +1,3 @@
-import { UrgencyBar } from "@/components/urgency-bar"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { Marquee } from "@/components/marquee"
@@ -15,7 +14,6 @@ import { Footer } from "@/components/footer"
 export default function Page() {
   return (
     <main className="min-h-dvh overflow-x-hidden">
-      <UrgencyBar />
       <Navbar />
       <Hero />
       <Marquee />

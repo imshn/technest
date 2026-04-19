@@ -18,9 +18,9 @@ const compareLinks = [
 ]
 
 const companyLinks = [
-  { label: "Services", href: "/#services" },
-  { label: "Process", href: "/#process" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "Services", href: "/services" },
+  { label: "Process", href: "/process" },
+  { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
   { label: "AI Automation Statistics", href: "/ai-automation-statistics" },
 ]

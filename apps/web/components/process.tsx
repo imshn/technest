@@ -45,7 +45,7 @@ export function Process() {
         </div>
 
         <div className="relative">
-          <div className="hidden md:block absolute left-[calc(theme(spacing.14)+1px)] top-0 bottom-0 w-px bg-border/60" />
+          <div className="hidden md:block absolute left-[calc(--spacing(14)+1px)] top-0 bottom-0 w-px bg-border/60" />
 
           <div className="flex flex-col gap-0">
             {steps.map((step, i) => (
