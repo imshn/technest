@@ -18,7 +18,7 @@ type Service = {
   icon: React.ElementType
   title: string
   tagline: string
-  primary_tech: string
+  tech: string[]
   slug: string
   span?: string
 }
@@ -28,7 +28,7 @@ const services: Service[] = [
     icon: RiRobotLine,
     title: "Multi-Agent AI Systems",
     tagline: "Deploy autonomous AI pipelines that handle complex workflows",
-    primary_tech: "LangChain, OpenAI, Claude",
+    tech: ["LangChain", "LangGraph", "OpenAI", "Claude", "AutoGen", "CrewAI", "RAG", "Vector DB", "Python", "FastAPI"],
     slug: "multi-agent-ai-systems",
     span: "lg:col-span-2",
   },
@@ -36,21 +36,21 @@ const services: Service[] = [
     icon: RiFlowChart,
     title: "Agentic Workflows",
     tagline: "LLM-powered automation using RAG and function calling",
-    primary_tech: "LangGraph",
+    tech: ["LangGraph", "OpenAI", "Function Calling", "Pinecone", "Weaviate", "Webhooks", "Python", "REST APIs"],
     slug: "agentic-workflows",
   },
   {
     icon: RiLoopLeftLine,
     title: "N8n Workflow Automation",
     tagline: "Self-hosted alternative to Zapier at fraction of cost",
-    primary_tech: "N8n",
+    tech: ["N8n", "Docker", "Webhooks", "REST API", "PostgreSQL", "Slack", "Gmail", "HubSpot", "Notion"],
     slug: "n8n-workflow-automation",
   },
   {
     icon: RiCodeSSlashLine,
     title: "SaaS Platform Development",
     tagline: "Multi-tenant SaaS with auth, billing, and analytics",
-    primary_tech: "Next.js, Supabase, Stripe",
+    tech: ["Next.js", "Supabase", "Stripe", "PostgreSQL", "Prisma", "Auth.js", "TypeScript", "Vercel", "Redis"],
     slug: "saas-platform-development",
     span: "lg:col-span-2",
   },
@@ -58,35 +58,35 @@ const services: Service[] = [
     icon: RiWindowLine,
     title: "Web App Development",
     tagline: "High-performance React and Next.js applications",
-    primary_tech: "TypeScript, Postgres",
+    tech: ["React", "Next.js", "TypeScript", "PostgreSQL", "TailwindCSS", "GraphQL", "AWS", "Vercel"],
     slug: "web-app-development",
   },
   {
     icon: RiSmartphoneLine,
     title: "Mobile App Development",
     tagline: "iOS and Android apps from single React Native codebase",
-    primary_tech: "React Native, Expo",
+    tech: ["React Native", "Expo", "iOS", "Android", "TypeScript", "Supabase", "Push Notifications", "App Store"],
     slug: "mobile-app-development",
   },
   {
     icon: RiComputerLine,
     title: "Desktop App Development",
     tagline: "Cross-platform desktop apps for Windows, macOS, Linux",
-    primary_tech: "Tauri, Electron",
+    tech: ["Tauri", "Electron", "Rust", "React", "SQLite", "Auto-updater", "Windows", "macOS", "Linux"],
     slug: "desktop-app-development",
   },
   {
     icon: RiPenNibLine,
     title: "Graphic Designing",
     tagline: "Logo systems, UI kits, and pitch decks in Figma",
-    primary_tech: "Figma",
+    tech: ["Figma", "Brand Identity", "Logo Design", "UI Kits", "Pitch Decks", "Design Systems", "Prototyping", "Illustrations"],
     slug: "graphic-designing",
   },
   {
     icon: RiMegaphoneLine,
     title: "Digital Marketing",
     tagline: "SEO, technical audits, and conversion optimization",
-    primary_tech: "SEO, CRO",
+    tech: ["SEO", "CRO", "Technical Audits", "Google Analytics", "Semrush", "Content Strategy", "Core Web Vitals", "Link Building"],
     slug: "digital-marketing",
     span: "lg:col-span-2",
   },
@@ -134,7 +134,16 @@ export function Services() {
                     </h3>
                     <p className="text-xs md:text-sm text-muted-foreground leading-snug mt-1.5">{svc.tagline}</p>
                   </div>
-                  <p className="text-xs text-primary/70 font-medium">{svc.primary_tech}</p>
+                  <div className="flex flex-wrap gap-1.5 mt-1">
+                    {svc.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/8 text-primary/80 border border-primary/15 group-hover:bg-primary/12 group-hover:border-primary/25 transition-colors duration-200"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* CTA Arrow */}
@@ -156,7 +165,7 @@ export function Services() {
               "itemListElement": services.map((svc, idx) => ({
                 "@type": "ListItem",
                 "position": idx + 1,
-                "name": `${svc.title}: ${svc.tagline}`,
+                "name": `${svc.title}: ${svc.tagline} — ${svc.tech.join(", ")}`,
                 "item": `https://technestsolutions.in/services/${svc.slug}`,
               })),
             }),
