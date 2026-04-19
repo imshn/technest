@@ -8,7 +8,6 @@ import { cn } from "@workspace/ui/lib/utils"
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
-  { label: "Results", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
 ]
 

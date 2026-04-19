@@ -20,7 +20,6 @@ const compareLinks = [
 const companyLinks = [
   { label: "Services", href: "/#services" },
   { label: "Process", href: "/#process" },
-  { label: "Results", href: "/#testimonials" },
   { label: "FAQ", href: "/#faq" },
   { label: "Blog", href: "/blog" },
   { label: "AI Automation Statistics", href: "/ai-automation-statistics" },
