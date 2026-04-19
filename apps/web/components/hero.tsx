@@ -5,6 +5,7 @@ import { CalendlyButton } from "@/components/calendly-button"
 // import Spline from '@splinetool/react-spline/next';
 import dynamic from 'next/dynamic';
 import { Suspense } from "react";
+import Link from "next/link";
 
 const SplineScene = dynamic(() => import('./SplineScene'), {
   ssr: false,
@@ -72,12 +73,12 @@ export function Hero() {
                 icon={<RiArrowRightLine size={15} />}
                 className="flex-row-reverse"
               />
-              <a
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-foreground rounded-md border border-border/80 bg-background/60 backdrop-blur-sm hover:bg-muted/60 transition-all duration-150 active:scale-[0.98]"
               >
                 Send Us a Brief
-              </a>
+              </Link>
             </div>
 
             <p className="text-xs text-muted-foreground/70 tracking-wide">
