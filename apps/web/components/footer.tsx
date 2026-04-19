@@ -128,9 +128,10 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} TechNest. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground">
-            Built with Next.js, Tailwind CSS, and a focus on outcomes.
-          </p>
+          <div className="flex items-center gap-4">
+            <a href="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-150">Privacy Policy</a>
+            <a href="/terms" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-150">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>
