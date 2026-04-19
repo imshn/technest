@@ -114,7 +114,7 @@ Discovers related blog posts or case studies, excluding the current item.
 import { getRelatedContent } from '@/components/related-content'
 import { blogPosts } from '@/components/blog-preview'
 
-const relatedBlogs = getRelatedContent("post-1", blogPosts, "blog")
+const relatedblog = getRelatedContent("post-1", blogPosts, "blog")
 // Returns: [
 //   { title: "...", href: "/blog/post-2", type: "blog" },
 //   { title: "...", href: "/blog/post-3", type: "blog" }
