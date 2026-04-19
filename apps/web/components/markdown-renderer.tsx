@@ -4,6 +4,27 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeSanitize from "rehype-sanitize"
 import type { Components } from "react-markdown"
+import { CalendlyButton } from "@/components/calendly-button"
+
+const IMSHN_URL_RE = /https?:\/\/(?:www\.)?imshn\.cloud\/?/gi
+const AI_ENGINE_BYLINE_RE = /Published\s+by\s+the\s+TechNest\s+Solutions\s+AI\s+Engine\.?/gi
+
+function sanitizeBlogContent(content: string) {
+  return content
+    .replace(AI_ENGINE_BYLINE_RE, "Published by the TechNest Solutions.")
+    .replace(
+      /\[([^\]]*?)TechNest\s+Solutions([^\]]*?)\]\(\s*https?:\/\/(?:www\.)?imshn\.cloud\/?\s*\)/gi,
+      "$1[TechNest Solutions](/)$2"
+    )
+    .replace(/\]\(\s*https?:\/\/(?:www\.)?imshn\.cloud\/?\s*\)/gi, "](/)")
+    .replace(IMSHN_URL_RE, "")
+}
+
+function textFromChildren(children: React.ReactNode): string {
+  if (typeof children === "string" || typeof children === "number") return String(children)
+  if (Array.isArray(children)) return children.map(textFromChildren).join("")
+  return ""
+}
 
 const components: Components = {
   // Headings
@@ -51,16 +72,33 @@ const components: Components = {
   ),
 
   // Links
-  a: ({ href, children }) => (
-    <a
-      href={href}
-      target={href?.startsWith("http") ? "_blank" : undefined}
-      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="text-primary font-medium border-b border-primary/40 hover:border-primary transition-colors duration-150 no-underline"
-    >
-      {children}
-    </a>
-  ),
+  a: ({ href, children }) => {
+    const label = textFromChildren(children).trim()
+    const shouldBookMeeting = label === "TechNest Solutions" && (!href || href === "/" || IMSHN_URL_RE.test(href))
+    IMSHN_URL_RE.lastIndex = 0
+
+    if (shouldBookMeeting) {
+      return (
+        <CalendlyButton
+          label="TechNest Solutions"
+          variant="ghost"
+          trackAs="blog_technest_solutions_link_clicked"
+          className="inline text-lg font-medium text-primary border-b border-primary/40 hover:border-primary"
+        />
+      )
+    }
+
+    return (
+      <a
+        href={href}
+        target={href?.startsWith("http") ? "_blank" : undefined}
+        rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="text-primary font-medium border-b border-primary/40 hover:border-primary transition-colors duration-150 no-underline"
+      >
+        {children}
+      </a>
+    )
+  },
 
   // Blockquote
   blockquote: ({ children }) => (
@@ -130,13 +168,15 @@ type Props = {
 }
 
 export function MarkdownRenderer({ content }: Props) {
+  const sanitizedContent = sanitizeBlogContent(content)
+
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeSanitize]}
       components={components}
     >
-      {content}
+      {sanitizedContent}
     </ReactMarkdown>
   )
 }
