@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { RiTwitterXLine, RiLinkedinBoxLine, RiLinksLine, RiCheckLine } from "@remixicon/react"
 
-export function bloghareButtons({ title, slug }: { title: string; slug: string }) {
+export function BlogShareButtons({ title, slug }: { title: string; slug: string }) {
   const [copied, setCopied] = useState(false)
 
   const url = `https://technestsolutions.in/blog/${slug}`

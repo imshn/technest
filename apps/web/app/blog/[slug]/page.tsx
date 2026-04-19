@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CalendlyButton } from "@/components/calendly-button"
-import { bloghareButtons } from "@/components/blog-share-buttons"
+import { BlogShareButtons } from "@/components/blog-share-buttons"
 import { RelatedContent, getRelatedServices, getRelatedContent } from "@/components/related-content"
 import { RiArrowLeftLine, RiArrowRightLine, RiCalendarLine, RiTimeLine } from "@remixicon/react"
 import { getPosts, getPost } from "@/lib/blog-store"
@@ -153,7 +153,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
                     <span className="w-1 h-1 rounded-full bg-border" />
                     <span className="font-medium text-foreground">TechNest</span>
                   </div>
-                  <bloghareButtons title={meta.title} slug={slug} />
+                  <BlogShareButtons title={meta.title} slug={slug} />
                 </div>
               </header>
 
@@ -183,7 +183,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
                 <a href="/blog" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-150">
                   <RiArrowLeftLine size={14} />Back to all articles
                 </a>
-                <bloghareButtons title={meta.title} slug={slug} />
+                <BlogShareButtons title={meta.title} slug={slug} />
               </div>
 
               <div className="mt-10 rounded-2xl border border-primary/20 bg-primary/4 p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
