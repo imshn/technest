@@ -7,6 +7,7 @@ import { BlogShareButtons } from "@/components/blog-share-buttons"
 import { RelatedContent, getRelatedServices, getRelatedContent } from "@/components/related-content"
 import { RiArrowLeftLine, RiArrowRightLine, RiCalendarLine, RiTimeLine } from "@remixicon/react"
 import { getPosts, getPost } from "@/lib/blog-store"
+import { MarkdownRenderer } from "@/components/markdown-renderer"
 
 const siteUrl = "https://technestsolutions.in"
 
@@ -157,27 +158,9 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
                 </div>
               </header>
 
-              <div
-                className="prose prose-lg md:prose-xl prose-neutral dark:prose-invert max-w-none
-                  prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
-                  prose-h1:text-3xl prose-h1:leading-tight
-                  prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-border/30
-                  prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-3
-                  prose-h4:text-lg prose-h4:mt-8 prose-h4:mb-2
-                  prose-p:leading-[1.78] prose-p:text-foreground/80 prose-p:my-6
-                  prose-li:leading-[1.78] prose-li:text-foreground/80 prose-li:my-1.5
-                  prose-ol:my-6 prose-ul:my-6 prose-ol:pl-6 prose-ul:pl-6
-                  prose-a:text-primary prose-a:no-underline prose-a:font-medium prose-a:border-b prose-a:border-primary/40 hover:prose-a:border-primary hover:prose-a:text-primary
-                  prose-strong:text-foreground prose-strong:font-semibold
-                  prose-em:text-foreground/75
-                  prose-code:bg-muted/70 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-[0.875em] prose-code:font-normal prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none
-                  prose-pre:bg-zinc-950 prose-pre:border prose-pre:border-border/60 prose-pre:rounded-xl prose-pre:my-8
-                  prose-blockquote:border-l-[3px] prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:px-6 prose-blockquote:py-5 prose-blockquote:rounded-r-xl prose-blockquote:my-10 prose-blockquote:not-italic prose-blockquote:text-foreground/85 prose-blockquote:font-medium
-                  prose-hr:border-border/30 prose-hr:my-12
-                  prose-img:rounded-2xl prose-img:border prose-img:border-border/60 prose-img:shadow-md prose-img:my-10
-                  prose-figure:my-10 prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-muted-foreground prose-figcaption:mt-3"
-                dangerouslySetInnerHTML={{ __html: meta.content ?? "" }}
-              />
+              <div className="max-w-none">
+                <MarkdownRenderer content={meta.content ?? ""} />
+              </div>
 
               <div className="mt-12 pt-8 border-t border-border/60 flex items-center justify-between gap-4 flex-wrap">
                 <a href="/blog" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-150">

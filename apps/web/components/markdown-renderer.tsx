@@ -1,0 +1,142 @@
+"use client"
+
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import rehypeSanitize from "rehype-sanitize"
+import type { Components } from "react-markdown"
+
+const components: Components = {
+  // Headings
+  h1: ({ children }) => (
+    <h1 className="text-3xl font-bold tracking-tight text-foreground mt-10 mb-4 leading-tight">
+      {children}
+    </h1>
+  ),
+  h2: ({ children }) => (
+    <h2 className="text-2xl font-bold tracking-tight text-foreground mt-14 mb-4 pb-2 border-b border-border/30">
+      {children}
+    </h2>
+  ),
+  h3: ({ children }) => (
+    <h3 className="text-xl font-bold tracking-tight text-foreground mt-10 mb-3">
+      {children}
+    </h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className="text-lg font-semibold text-foreground mt-8 mb-2">{children}</h4>
+  ),
+
+  // Body
+  p: ({ children }) => (
+    <p className="text-foreground/80 leading-[1.78] my-6 text-lg">{children}</p>
+  ),
+  strong: ({ children }) => (
+    <strong className="font-semibold text-foreground">{children}</strong>
+  ),
+  em: ({ children }) => (
+    <em className="italic text-foreground/75">{children}</em>
+  ),
+
+  // Lists
+  ul: ({ children }) => (
+    <ul className="my-6 pl-6 space-y-2 list-disc marker:text-primary/60">{children}</ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="my-6 pl-6 space-y-2 list-decimal marker:text-primary/60 marker:font-medium">
+      {children}
+    </ol>
+  ),
+  li: ({ children }) => (
+    <li className="text-foreground/80 leading-[1.78] text-lg pl-1">{children}</li>
+  ),
+
+  // Links
+  a: ({ href, children }) => (
+    <a
+      href={href}
+      target={href?.startsWith("http") ? "_blank" : undefined}
+      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+      className="text-primary font-medium border-b border-primary/40 hover:border-primary transition-colors duration-150 no-underline"
+    >
+      {children}
+    </a>
+  ),
+
+  // Blockquote
+  blockquote: ({ children }) => (
+    <blockquote className="border-l-[3px] border-primary bg-primary/5 px-6 py-5 rounded-r-xl my-10 text-foreground/85 font-medium text-lg leading-[1.78]">
+      {children}
+    </blockquote>
+  ),
+
+  // Code
+  code: ({ className, children, ...props }) => {
+    const isBlock = className?.includes("language-")
+    if (isBlock) {
+      return (
+        <code className={className} {...props}>
+          {children}
+        </code>
+      )
+    }
+    return (
+      <code className="bg-muted/70 text-foreground px-1.5 py-0.5 rounded-md text-[0.875em] font-mono">
+        {children}
+      </code>
+    )
+  },
+  pre: ({ children }) => (
+    <pre className="bg-zinc-950 border border-border/60 rounded-xl my-8 p-5 overflow-x-auto text-sm leading-relaxed">
+      {children}
+    </pre>
+  ),
+
+  // Media
+  img: ({ src, alt }) => (
+    <img
+      src={src}
+      alt={alt}
+      className="rounded-2xl border border-border/60 shadow-md my-10 w-full object-cover"
+      loading="lazy"
+    />
+  ),
+
+  // Divider
+  hr: () => <hr className="border-border/30 my-12" />,
+
+  // GFM: tables
+  table: ({ children }) => (
+    <div className="my-8 overflow-x-auto rounded-xl border border-border/60">
+      <table className="w-full text-sm">{children}</table>
+    </div>
+  ),
+  thead: ({ children }) => (
+    <thead className="bg-muted/40 text-foreground font-semibold">{children}</thead>
+  ),
+  tbody: ({ children }) => (
+    <tbody className="divide-y divide-border/40 text-foreground/80">{children}</tbody>
+  ),
+  tr: ({ children }) => <tr>{children}</tr>,
+  th: ({ children }) => (
+    <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">
+      {children}
+    </th>
+  ),
+  td: ({ children }) => <td className="px-4 py-3 leading-relaxed">{children}</td>,
+}
+
+type Props = {
+  content: string
+}
+
+export function MarkdownRenderer({ content }: Props) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeSanitize]}
+      components={components}
+    >
+      {content}
+    </ReactMarkdown>
+  )
+}
