@@ -6,9 +6,10 @@ import { CalendlyButton } from "@/components/calendly-button"
 import { cn } from "@workspace/ui/lib/utils"
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Services", href: "/services" },
+  { label: "Process", href: "/process" },
+  { label: "Blogs", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
 ]
 
 export function Navbar() {
@@ -25,9 +26,8 @@ export function Navbar() {
     <header
       className={cn(
         "fixed left-0 right-0 z-50 transition-all duration-300",
-        scrolled
-          ? "top-0 bg-background/80 backdrop-blur-md border-b border-border/60 shadow-[0_1px_0_rgba(0,0,0,0.04)]"
-          : "top-9.5 bg-transparent border-b border-t"
+         "top-0 bg-background/80 backdrop-blur-md border-b border-border/60 shadow-[0_1px_0_rgba(0,0,0,0.04)]"
+          
       )}
     >
       <div className="max-w-350 mx-auto px-6 md:px-10 h-16 flex items-center justify-between">

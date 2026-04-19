@@ -101,7 +101,7 @@ export function ContactPageForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1.5">
             <label htmlFor="cpf-name" className="text-xs font-medium text-zinc-400">Full name <span className="text-primary">*</span></label>
-            <input id="cpf-name" name="name" type="text" required placeholder="Shaan Khan" className={inputBase} />
+            <input id="cpf-name" name="name" type="text" required placeholder="John Doe" className={inputBase} />
           </div>
           <div className="flex flex-col gap-1.5">
             <label htmlFor="cpf-company" className="text-xs font-medium text-zinc-400">Company <span className="text-zinc-600">(optional)</span></label>
