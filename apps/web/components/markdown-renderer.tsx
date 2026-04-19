@@ -7,11 +7,16 @@ import type { Components } from "react-markdown"
 import { CalendlyButton } from "@/components/calendly-button"
 
 const IMSHN_URL_RE = /https?:\/\/(?:www\.)?imshn\.cloud\/?/gi
-const AI_ENGINE_BYLINE_RE = /Published\s+by\s+the\s+TechNest\s+Solutions\s+AI\s+Engine\.?/gi
+const AI_ENGINE_BYLINE_RE =
+  /Published\s+by\s+the\s+(?:\\?\[)?TechNest\s+Solutions(?:\s+AI\s+Engine)?(?:\\?\])?(?:\\?\(\\?\/?\\?\))?\.?/gi
 
 function sanitizeBlogContent(content: string) {
   return content
     .replace(AI_ENGINE_BYLINE_RE, "Published by the TechNest Solutions.")
+    .replace(
+      /\\?\[([^\]\n]*?)TechNest\s+Solutions([^\]\n]*?)\\?\]\\?\(\\?\/?\\?\)/gi,
+      "$1[TechNest Solutions](/)$2"
+    )
     .replace(
       /\[([^\]]*?)TechNest\s+Solutions([^\]]*?)\]\(\s*https?:\/\/(?:www\.)?imshn\.cloud\/?\s*\)/gi,
       "$1[TechNest Solutions](/)$2"
