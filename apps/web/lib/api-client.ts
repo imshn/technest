@@ -11,15 +11,18 @@ export interface FeaturedImage {
   alt: string
 }
 
+export type PostTag = "AI Automation" | "N8n" | "SaaS" | "Web Development" | "Automation" | "AI Strategy"
+export type PostStatus = "draft" | "published"
+
 export interface Post {
   slug: string
   title: string
   seoExcerpt: string
   excerpt: string
   content: string
-  tag: string
+  tag: PostTag
   author: string
-  status: "draft" | "published"
+  status: PostStatus
   date: string
   readTime: string
   featuredImage: FeaturedImage | null
@@ -35,12 +38,15 @@ interface ApiPostRow {
   seo_excerpt: string
   excerpt: string
   content: string
-  tag: string
+  tag: PostTag
   author: string
-  status: "draft" | "published"
+  status: PostStatus
   date: string
-  featured_image_url: string | null
-  featured_image_alt: string
+  featured_image_url?: string | null
+  featured_image_alt?: string
+  imageUrl?: string | null
+  imageAlt?: string
+  featuredImage?: FeaturedImage | null
   created_at: string
 }
 
@@ -48,20 +54,22 @@ interface ApiPostRow {
 export interface PostData {
   title: string
   content: string
-  tag: string
+  tag: PostTag
   seoExcerpt?: string
   excerpt?: string
   author?: string
-  status?: "draft" | "published"
+  status?: PostStatus
   date?: string
   slug?: string
-  featuredImage?: { url: string; alt: string }
+  featuredImage?: FeaturedImage
 }
 
 // ── Row → Post mapper ─────────────────────────────────────────────────────────
 
 function rowToPost(r: ApiPostRow): Post {
-  const hasImage = Boolean(r.featured_image_url)
+  const imageUrl = r.featuredImage?.url ?? r.imageUrl ?? r.featured_image_url ?? null
+  const imageAlt = r.featuredImage?.alt ?? r.imageAlt ?? r.featured_image_alt ?? ""
+  const hasImage = Boolean(imageUrl)
   return {
     slug: r.slug,
     title: r.title,
@@ -74,10 +82,10 @@ function rowToPost(r: ApiPostRow): Post {
     date: r.date,
     readTime: estimateReadTime(r.content ?? ""),
     featuredImage: hasImage
-      ? { url: r.featured_image_url!, alt: r.featured_image_alt ?? "" }
+      ? { url: imageUrl!, alt: imageAlt }
       : null,
-    imageUrl: r.featured_image_url || null,
-    imageAlt: r.featured_image_alt ?? "",
+    imageUrl,
+    imageAlt,
   }
 }
 
@@ -135,7 +143,8 @@ export async function getPosts(status?: "all" | "published"): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
-    const row = await apiFetch<ApiPostRow>(`/blog/${slug}`)
+    const response = await apiFetch<ApiPostRow | { data: ApiPostRow }>(`/blog/${slug}`)
+    const row = "data" in response ? response.data : response
     return rowToPost(row)
   } catch (err) {
     if (err instanceof Error && err.message.includes("(404)")) return null

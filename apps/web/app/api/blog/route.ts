@@ -13,33 +13,35 @@ export async function GET(req: NextRequest) {
 
   if (searchParams.get("schema") === "1") {
     return withCors(NextResponse.json({
-      description: "TechNest Blog API — schema reference for AI agents",
-      baseUrl: "https://technestsolutions.in",
+      description: "TechNest Blog API schema from VPS imshn.cloud",
+      baseUrl: "https://imshn.cloud/api",
       auth: "Pass BLOG_API_KEY as x-api-key header on all write requests",
       endpoints: {
-        "GET /api/blog": "List published posts",
-        "GET /api/blog?status=all": "List all posts (requires x-api-key)",
-        "GET /api/blog/[slug]": "Get full post by slug",
-        "POST /api/blog": "Create post",
-        "PUT /api/blog/[slug]": "Update post",
-        "DELETE /api/blog/[slug]": "Delete post",
+        "GET /blog": "List published posts",
+        "GET /blog?status=all": "List all posts (requires x-api-key)",
+        "GET /blog/[slug]": "Get full post by slug",
+        "POST /blog": "Create post",
+        "PUT /blog/[slug]": "Update post status",
+        "DELETE /blog/[slug]": "Delete post",
       },
-      postSchema: {
-        title: "string — 50-70 chars ideal",
-        seoExcerpt: "string — 150-160 chars, used by Google and AI search",
-        excerpt: "string — ~100 chars for cards",
-        tag: "string — 'AI Automation' | 'N8n' | 'SaaS' | 'Web Development' | 'Automation' | 'AI Strategy'",
-        author: "string — always 'Shaan'",
-        date: "string — e.g. 'Apr 18, 2025' (auto-set if omitted)",
-        status: "'draft' | 'published'",
-        slug: "string — auto-generated from title if omitted",
-        featuredImage: { url: "string (full URL)", alt: "string (descriptive alt text)" },
-        content: `string — full post body as HTML:
-  <h2> main headings, <h3> sub-sections, <p> paragraphs
-  <ul><li> bullets, <ol><li> numbered lists
-  <strong> bold, <a href="..."> links
-  <pre><code> code blocks, <img src="URL" alt="..."> inline images
-  <blockquote> quotes`,
+      schema: {
+        create_post: {
+          title: "string (required)",
+          content: "markdown required",
+          tag: "AI Automation|N8n|SaaS|Web Development|Automation|AI Strategy (required)",
+          seoExcerpt: "string 150-160 chars",
+          excerpt: "string ~100 chars for cards",
+          author: "Shaan",
+          status: "draft|published",
+          date: "Month Date, Year",
+          featuredImage: {
+            url: "https://...",
+            alt: "description",
+          },
+        },
+        update_post: {
+          status: "published",
+        },
       },
       examplePayload: {
         title: "How AI Agents Are Replacing Manual Data Entry in 2025",
@@ -47,13 +49,13 @@ export async function GET(req: NextRequest) {
         excerpt: "AI agents are automating manual data entry — architecture and ROI from real deployments.",
         tag: "AI Automation",
         author: "Shaan",
-        date: "Apr 18, 2025",
+        date: "April 18, 2025",
         status: "draft",
         featuredImage: {
           url: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80",
           alt: "AI data entry automation workflow",
         },
-        content: "<p>Opening hook...</p><h2>The Problem</h2><p>Body text...</p><h2>The Solution</h2><p>...</p>",
+        content: "Opening hook...\n\n## The Problem\n\nBody text...\n\n## The Solution\n\n...",
       },
     }), req)
   }

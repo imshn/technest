@@ -6,7 +6,7 @@ import Image from "@tiptap/extension-image"
 import Link from "@tiptap/extension-link"
 import Placeholder from "@tiptap/extension-placeholder"
 import CharacterCount from "@tiptap/extension-character-count"
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import type { BlogPost } from "@/lib/blog-store"
 import {
@@ -16,6 +16,85 @@ import {
 } from "@remixicon/react"
 
 const TAGS = ["AI Automation", "N8n", "SaaS", "Web Development", "Automation", "AI Strategy"]
+
+type RichTextMark = {
+  type: string
+  attrs?: Record<string, unknown>
+}
+
+type RichTextNode = {
+  type?: string
+  text?: string
+  attrs?: Record<string, unknown>
+  marks?: RichTextMark[]
+  content?: RichTextNode[]
+}
+
+function escapeMarkdown(text: string) {
+  return text.replace(new RegExp("[\\\\`*_{}\\[\\]()+#!>]", "g"), "\\$&")
+}
+
+function inlineMarkdown(nodes: RichTextNode[] = []): string {
+  return nodes.map((node) => {
+    if (node.type === "text") {
+      let text = escapeMarkdown(node.text ?? "")
+      for (const mark of node.marks ?? []) {
+        if (mark.type === "code") text = `\`${text.replace(/`/g, "\\`")}\``
+        if (mark.type === "bold") text = `**${text}**`
+        if (mark.type === "italic") text = `*${text}*`
+        if (mark.type === "link" && typeof mark.attrs?.href === "string") text = `[${text}](${mark.attrs.href})`
+      }
+      return text
+    }
+    if (node.type === "hardBreak") return "\n"
+    if (node.type === "image" && typeof node.attrs?.src === "string") {
+      const alt = typeof node.attrs.alt === "string" ? node.attrs.alt : ""
+      return `![${escapeMarkdown(alt)}](${node.attrs.src})`
+    }
+    return inlineMarkdown(node.content)
+  }).join("")
+}
+
+function blockMarkdown(node: RichTextNode, index = 0, listType?: "bullet" | "ordered"): string {
+  const content = node.content ?? []
+
+  switch (node.type) {
+    case "heading": {
+      const level = Number(node.attrs?.level ?? 2)
+      return `${"#".repeat(Math.min(Math.max(level, 1), 6))} ${inlineMarkdown(content)}\n\n`
+    }
+    case "paragraph": {
+      const text = inlineMarkdown(content).trim()
+      return text ? `${text}\n\n` : ""
+    }
+    case "blockquote": {
+      const quote = content.map((child) => blockMarkdown(child).trim()).filter(Boolean).join("\n\n")
+      return `${quote.split("\n").map((line) => `> ${line}`).join("\n")}\n\n`
+    }
+    case "bulletList":
+      return `${content.map((child, i) => blockMarkdown(child, i, "bullet").trim()).filter(Boolean).join("\n")}\n\n`
+    case "orderedList":
+      return `${content.map((child, i) => blockMarkdown(child, i, "ordered").trim()).filter(Boolean).join("\n")}\n\n`
+    case "listItem": {
+      const marker = listType === "ordered" ? `${index + 1}.` : "-"
+      const text = content.map((child) => blockMarkdown(child).trim()).filter(Boolean).join("\n  ")
+      return `${marker} ${text}`
+    }
+    case "codeBlock": {
+      const language = typeof node.attrs?.language === "string" ? node.attrs.language : ""
+      const code = content.map((child) => child.text ?? "").join("")
+      return `\`\`\`${language}\n${code}\n\`\`\`\n\n`
+    }
+    case "horizontalRule":
+      return "---\n\n"
+    default:
+      return inlineMarkdown(content)
+  }
+}
+
+function editorJsonToMarkdown(doc: RichTextNode) {
+  return (doc.content ?? []).map((node) => blockMarkdown(node)).join("").trim()
+}
 
 type Props = {
   post?: BlogPost | null
@@ -34,7 +113,7 @@ export function PostEditor({ post, mode }: Props) {
   const [excerpt, setExcerpt] = useState(post?.excerpt ?? "")
   const [tag, setTag] = useState(post?.tag ?? TAGS[0]!)
   const [date, setDate] = useState(
-    post?.date ?? new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+    post?.date ?? new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
   )
   const [featuredImageUrl, setFeaturedImageUrl] = useState(post?.featuredImage?.url ?? post?.imageUrl ?? "")
   const [featuredImageAlt, setFeaturedImageAlt] = useState(post?.featuredImage?.alt ?? post?.imageAlt ?? "")
@@ -72,11 +151,21 @@ export function PostEditor({ post, mode }: Props) {
 
   async function handleSave(publish = false) {
     if (!title || !editor) return
-    publish ? setPublishing(true) : setSaving(true)
+    if (publish) {
+      setPublishing(true)
+    } else {
+      setSaving(true)
+    }
     setError("")
 
-    const content = editor.getHTML()
+    const content = editorJsonToMarkdown(editor.getJSON() as RichTextNode)
     const slug = post?.slug
+    if (!content) {
+      setError("Content required")
+      setSaving(false)
+      setPublishing(false)
+      return
+    }
 
     const payload = {
       title,
@@ -365,7 +454,7 @@ export function PostEditor({ post, mode }: Props) {
               <a
                 href={`https://unsplash.com/s/photos/${encodeURIComponent(imageSearch || "technology")}`}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
                 className="h-9 px-3 rounded-lg border border-border/70 bg-card text-xs font-medium text-foreground hover:bg-muted/50 transition-colors flex items-center"
               >
                 Search
@@ -381,6 +470,7 @@ export function PostEditor({ post, mode }: Props) {
             <a
               href={`/blog/${post.slug}`}
               target="_blank"
+              rel="noreferrer"
               className="text-xs text-primary hover:text-primary/80 transition-colors"
             >
               View live post →

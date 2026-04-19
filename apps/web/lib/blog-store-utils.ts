@@ -14,5 +14,5 @@ export function generateSlug(title: string): string {
 }
 
 export function formatDate(d = new Date()): string {
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
 }

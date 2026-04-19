@@ -156,6 +156,7 @@ export function AdminDashboard({ posts }: { posts: BlogPost[] }) {
                           <a
                             href={`/blog/${post.slug}`}
                             target="_blank"
+                            rel="noreferrer"
                             className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
                           >
                             <RiExternalLinkLine size={12} />
@@ -174,10 +175,10 @@ export function AdminDashboard({ posts }: { posts: BlogPost[] }) {
         <div className="mt-10 rounded-xl border border-border/60 bg-muted/20 p-5">
           <p className="text-xs font-medium text-foreground mb-2">OpenClaw API Access</p>
           <p className="text-xs text-muted-foreground mb-3">
-            Point OpenClaw at your deployed site. Full schema at:
+            Point OpenClaw at VPS API. Full schema at:
           </p>
           <code className="text-xs bg-muted px-3 py-1.5 rounded-lg text-foreground select-all block">
-            GET https://technestsolutions.in/api/blog?schema=1
+            GET https://imshn.cloud/api/blog?schema=1
           </code>
           <p className="text-xs text-muted-foreground mt-3">
             Authenticate write requests with <code className="bg-muted px-1 rounded text-xs">x-api-key: BLOG_API_KEY</code>

@@ -16,6 +16,7 @@ export type ApiPost = {
   slug: string
   title: string
   excerpt: string
+  featuredImage?: { url: string; alt: string } | null
   imageUrl?: string | null
   imageAlt?: string
   tag?: string
@@ -37,6 +38,13 @@ type Props = {
 
 function normalize(str: string) {
   return str.toLowerCase()
+}
+
+function postImage(post: ApiPost) {
+  return {
+    url: post.featuredImage?.url ?? post.imageUrl ?? null,
+    alt: post.featuredImage?.alt ?? post.imageAlt ?? post.title,
+  }
 }
 
 export function BlogIndex({ initialPosts, initialPagination }: Props) {
@@ -228,6 +236,8 @@ export function BlogIndex({ initialPosts, initialPagination }: Props) {
 }
 
 function PostCard({ post, featured }: { post: ApiPost; featured: boolean }) {
+  const image = postImage(post)
+
   return (
     <article
       className={`group rounded-2xl border border-border/60 bg-card flex flex-col overflow-hidden hover:border-border transition-all duration-200 ${
@@ -236,10 +246,10 @@ function PostCard({ post, featured }: { post: ApiPost; featured: boolean }) {
       style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)" }}
     >
       <div className={`overflow-hidden relative border-b border-border/60 ${featured ? "h-64" : "h-44"}`}>
-        {post.imageUrl ? (
+        {image.url ? (
           <img
-            src={post.imageUrl}
-            alt={post.imageAlt ?? post.title}
+            src={image.url}
+            alt={image.alt}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
           />
@@ -252,7 +262,7 @@ function PostCard({ post, featured }: { post: ApiPost; featured: boolean }) {
             )}
           </div>
         )}
-        {post.imageUrl && post.tag && (
+        {image.url && post.tag && (
           <div className="absolute top-3 left-3">
             <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-background/85 backdrop-blur-sm text-foreground border border-border/60">
               {post.tag}
