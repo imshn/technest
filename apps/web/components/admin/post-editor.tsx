@@ -7,13 +7,13 @@ import Link from "@tiptap/extension-link"
 import Placeholder from "@tiptap/extension-placeholder"
 import CharacterCount from "@tiptap/extension-character-count"
 import { marked } from "marked"
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 
 function markdownToHtml(md: string): string {
   if (!md) return ""
-  // Already HTML — don't double-convert
   if (md.trimStart().startsWith("<")) return md
-  return marked.parse(md, { async: false }) as string
+  const result = marked.parse(md)
+  return typeof result === "string" ? result : md
 }
 import { useRouter } from "next/navigation"
 import type { BlogPost } from "@/lib/blog-store"
@@ -135,13 +135,20 @@ export function PostEditor({ post, mode }: Props) {
       Placeholder.configure({ placeholder: "Start writing your post…" }),
       CharacterCount,
     ],
-    content: markdownToHtml(post?.content ?? ""),
+    content: "",
     editorProps: {
       attributes: {
         class: "prose prose-sm md:prose-base prose-neutral dark:prose-invert max-w-none min-h-[400px] focus:outline-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-primary prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-zinc-950 prose-pre:border prose-pre:border-border/60 prose-img:rounded-xl",
       },
     },
   })
+
+  // Load markdown content once editor is ready — setContent is reliable vs constructor prop
+  useEffect(() => {
+    if (editor && post?.content) {
+      editor.commands.setContent(markdownToHtml(post.content))
+    }
+  }, [editor])
 
   // Insert image into editor content
   const insertImage = useCallback(() => {
