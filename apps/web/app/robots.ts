@@ -61,6 +61,5 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "ia_archiver", allow: "/" },             // Wayback Machine
     ],
     sitemap: `https://technestsolutions.in/sitemap.xml`,
-    host: "https://technestsolutions.in",
   }
 }
