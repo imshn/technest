@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { RiArrowRightLine, RiCheckLine, RiMailLine, RiShieldCheckLine, RiTimeLine } from '@remixicon/react'
+import { AvatarStack } from '@/components/avatar-stack'
 
 const BENEFITS = [
   { icon: <RiTimeLine size={13} />, text: '1 pattern + 1 case study + 1 tool — under 5 min read' },
@@ -9,7 +10,6 @@ const BENEFITS = [
   { icon: <RiShieldCheckLine size={13} />, text: 'Early access to tools we build and use ourselves' },
 ]
 
-const AVATARS = ['3d4e5f', '6e7f8a', '9f0a1b', '2c3d4e', 'a1b2c3']
 
 export function NewsletterCTA() {
   const [email, setEmail] = useState('')
@@ -134,17 +134,7 @@ export function NewsletterCTA() {
             <div className="flex flex-col items-center gap-2">
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
-                  {AVATARS.map((seed, i) => (
-                    <img
-                      key={seed}
-                      src={`https://picsum.photos/seed/${seed}/32/32`}
-                      alt=""
-                      width={28}
-                      height={28}
-                      className="w-7 h-7 rounded-full border-2 border-background object-cover"
-                      style={{ zIndex: 5 - i }}
-                    />
-                  ))}
+                  <AvatarStack count={5} size={28} />
                 </div>
                 <p className="text-xs text-muted-foreground">
                   <span className="font-semibold text-foreground">2,400+ engineers</span> already subscribed

@@ -1,6 +1,7 @@
 "use client";
 import { RiArrowRightLine, RiFlowChart, RiRobotLine } from "@remixicon/react"
 import { CalendlyButton } from "@/components/calendly-button"
+import { AvatarStack } from "@/components/avatar-stack"
 // import SplineViewer from "@/components/spline-viewer"
 // import Spline from '@splinetool/react-spline/next';
 import dynamic from 'next/dynamic';
@@ -88,17 +89,7 @@ export function Hero() {
             {/* Social proof */}
             <div className="flex items-center gap-4 pt-1">
               <div className="flex -space-x-2">
-                {["3d4e5f", "6e7f8a", "9f0a1b", "2c3d4e"].map((seed, i) => (
-                  <img
-                    key={seed}
-                    src={`https://picsum.photos/seed/${seed}/32/32`}
-                    alt=""
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 rounded-full border-2 border-background object-cover"
-                    style={{ zIndex: 4 - i }}
-                  />
-                ))}
+                <AvatarStack count={4} size={32} />
               </div>
               <p className="text-sm text-muted-foreground">
                 <span className="font-semibold text-foreground">31+</span> businesses automated with TechNest
