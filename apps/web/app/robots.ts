@@ -24,7 +24,6 @@ export default function robots(): MetadataRoute.Robots {
           "/api/admin/",
           "/api/db-test/",
           "/api/revalidate/",
-          "/_next/",
         ],
       },
 
