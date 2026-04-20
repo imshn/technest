@@ -1,9 +1,9 @@
-const PALETTE = [
-  ["#6366f1", "#818cf8"], // indigo
-  ["#8b5cf6", "#a78bfa"], // violet
-  ["#ec4899", "#f472b6"], // pink
-  ["#14b8a6", "#2dd4bf"], // teal
-  ["#f59e0b", "#fbbf24"], // amber
+const PALETTE: [string, string][] = [
+  ["#6366f1", "#818cf8"],
+  ["#8b5cf6", "#a78bfa"],
+  ["#ec4899", "#f472b6"],
+  ["#14b8a6", "#2dd4bf"],
+  ["#f59e0b", "#fbbf24"],
 ]
 
 function SvgAvatar({ index, size }: { index: number; size: number }) {
