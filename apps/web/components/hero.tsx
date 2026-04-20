@@ -149,9 +149,9 @@ export function Hero() {
 
             <div className="grid grid-cols-3 gap-3">
               {[
-                { label: "Projects", value: "143+" },
+                { label: "Projects", value: "50+" },
                 { label: "Uptime", value: "99.7%" },
-                { label: "Clients", value: "31" },
+                { label: "On-Time", value: "98.3%" },
               ].map((m) => (
                 <div key={m.label} className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-md p-3.5 text-center" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)" }}>
                   <p className="text-lg font-semibold tracking-tight text-foreground">{m.value}</p>
