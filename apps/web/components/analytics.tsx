@@ -80,23 +80,14 @@ export function useEngagementTracking() {
   }, [])
 }
 
-export function Analytics() {
-  const hasGTM = !!GTM_ID
-  const hasGA = !!GA_ID && !hasGTM
+// GTM containers use GTM-XXXXXXX prefix. GT-XXXXXXX is a Google Tag — different loader.
+const isRealGTM = !!GTM_ID && GTM_ID.startsWith("GTM-")
 
+export function Analytics() {
   return (
     <>
-      {hasGTM && (
-        <Script id="gtm-init" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','${GTM_ID}');`}
-        </Script>
-      )}
-
-      {hasGA && (
+      {/* GA4 — always load directly so Google can detect the tag */}
+      {GA_ID && (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
           <Script id="ga4-init" strategy="afterInteractive">
@@ -105,12 +96,23 @@ export function Analytics() {
           </Script>
         </>
       )}
+
+      {/* GTM — only when a real GTM-XXXXXXX container ID is set */}
+      {isRealGTM && (
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+      )}
     </>
   )
 }
 
 export function GTMNoScript() {
-  if (!GTM_ID) return null
+  if (!isRealGTM) return null
   return (
     <noscript>
       <iframe
