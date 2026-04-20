@@ -327,7 +327,7 @@ Recommendations:
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Article Title",
-  "url": "http://technestsolutions.inblog/slug",
+  "url": "http://technestsolutions.in/blog/slug",
   "author": { "@type": "Organization", "name": "TechNest" },
   "articleBody": "..."
 }

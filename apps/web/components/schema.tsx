@@ -68,6 +68,19 @@ const organizationSchema = {
       areaServed: ["IN", "US", "AE", "SA", "KW", "QA", "GB", "DE", "NL"],
       availableLanguage: ["English"],
     },
+    {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      contactOption: "TollFree",
+      availableLanguage: ["English", "Hindi"],
+      areaServed: ["IN", "AE", "SA", "KW"],
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    },
   ],
   founder: { "@id": `${siteUrl}/#shaan` },
   speakable: {

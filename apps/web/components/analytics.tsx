@@ -1,6 +1,7 @@
 "use client"
 
 import Script from "next/script"
+import { useEffect } from "react"
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
@@ -31,6 +32,52 @@ export function trackCTAClick(ctaName: string) {
 export function trackPageView(path: string) {
   if (typeof window === "undefined" || !window.gtag || !GA_ID) return
   window.gtag("event", "page_view", { page_path: path, send_to: GA_ID })
+}
+
+export function useScrollDepthTracking() {
+  useEffect(() => {
+    const thresholds = [25, 50, 75, 90]
+    const fired = new Set<number>()
+
+    function onScroll() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      if (docHeight <= 0) return
+      const pct = Math.round((scrollTop / docHeight) * 100)
+
+      for (const t of thresholds) {
+        if (pct >= t && !fired.has(t)) {
+          fired.add(t)
+          trackEvent("scroll_depth", { depth_percent: t, page_path: window.location.pathname })
+          pushDataLayer({ event: "scroll_depth", depth_percent: t })
+        }
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+}
+
+export function useEngagementTracking() {
+  useEffect(() => {
+    const start = Date.now()
+    const milestones = [15, 30, 60, 120]
+    const fired = new Set<number>()
+    let timer: ReturnType<typeof setInterval>
+
+    timer = setInterval(() => {
+      const elapsed = Math.round((Date.now() - start) / 1000)
+      for (const m of milestones) {
+        if (elapsed >= m && !fired.has(m)) {
+          fired.add(m)
+          trackEvent("time_on_page", { seconds: m, page_path: window.location.pathname })
+        }
+      }
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [])
 }
 
 export function Analytics() {

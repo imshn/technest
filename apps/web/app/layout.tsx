@@ -6,6 +6,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics, GTMNoScript } from "@/components/analytics"
+import { EngagementTracker } from "@/components/engagement-tracker"
+import { WhatsAppCTA } from "@/components/whatsapp-cta"
 import { SchemaMarkup } from "@/components/schema"
 import { cn } from "@workspace/ui/lib/utils"
 
@@ -39,26 +41,39 @@ export const metadata: Metadata = {
     "n8n workflow automation",
     "SaaS development company",
     "custom AI agent development",
-    // India targeting
+    // India targeting — city + segment
     "AI agency India",
     "AI automation company India",
     "SaaS development company India",
     "software development agency Bangalore",
+    "AI development company Mumbai",
+    "software agency Delhi NCR",
+    "AI automation startup India",
+    "n8n automation India",
+    "AI consulting firm India",
+    "hire AI developer India",
+    "affordable AI development India",
+    "IT services company India",
     // Gulf targeting
     "AI agency Dubai",
     "AI automation UAE",
     "software development agency Dubai",
     "AI solutions Kuwait",
     "tech agency Saudi Arabia",
+    "AI development company Riyadh",
     // US/Europe targeting
     "AI development agency USA",
     "hire AI development team",
     "enterprise AI solutions",
-    // Intent-based
+    "offshore AI development team",
+    // Intent-based (high commercial)
     "hire AI automation agency",
     "agentic workflow development company",
     "n8n vs zapier",
     "multi agent AI system development",
+    "AI workflow automation cost",
+    "automate business processes AI",
+    "build AI agent for business",
   ],
   authors: [{ name: "TechNest", url: siteUrl }],
   creator: "TechNest",
@@ -154,6 +169,8 @@ export default function RootLayout({
         {/* GTM noscript fallback — must be first child of body */}
         <GTMNoScript />
         <ThemeProvider>{children}</ThemeProvider>
+        <WhatsAppCTA />
+        <EngagementTracker />
         {/* Analytics — Google Tag Manager / GA4 / Google Ads */}
         <Analytics />
         {/* Vercel Analytics + Core Web Vitals */}

@@ -15,7 +15,7 @@ import { Footer } from "@/components/footer"
 export default function Page() {
   return (
     <main className="min-h-dvh overflow-x-hidden">
-      {/* <UrgencyBar /> */}
+      <UrgencyBar />
       <Navbar />
       <Hero />
       <Marquee />
