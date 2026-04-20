@@ -7,7 +7,7 @@ const PALETTE: [string, string][] = [
 ]
 
 function SvgAvatar({ index, size }: { index: number; size: number }) {
-  const [from, to] = PALETTE[index % PALETTE.length]
+  const [from, to] = PALETTE[index % PALETTE.length] ?? PALETTE[0]!
   const id = `ag${index}`
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
