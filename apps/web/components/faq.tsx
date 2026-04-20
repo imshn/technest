@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Do you work with clients remotely, and which time zones do you cover?",
-    a: "Entirely remote and async-first. Our team covers UTC+0 through UTC+5:30, which gives strong overlap with North America (EST/PST mornings), the Gulf region (UAE, Kuwait), and South Asia (India). Weekly syncs can be scheduled across all these zones.",
+    a: "Entirely remote and async-first. Our team covers UTC+0 through UTC+5:30, which gives strong overlap with North America (EST/PST mornings), UK and Europe (GMT/CET), the Gulf region (UAE, Kuwait, Saudi Arabia), and Turkey (TRT). Weekly syncs can be scheduled across all these zones.",
   },
   {
     q: "What does a typical project engagement look like from start to finish?",

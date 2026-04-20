@@ -2,7 +2,7 @@ export function Stats() {
   const metrics = [
     { value: "143+", label: "Projects Delivered", sub: "across 12+ industries" },
     { value: "47.2%", label: "Avg. Efficiency Gain", sub: "measured post-deployment" },
-    { value: "31", label: "Active Clients", sub: "US, Gulf, South Asia" },
+    { value: "31", label: "Active Clients", sub: "US, UK, Gulf, Europe" },
     { value: "98.3%", label: "On-Time Delivery", sub: "since founding" },
   ]
 
