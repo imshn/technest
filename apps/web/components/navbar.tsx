@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { RiMenuLine, RiCloseLine } from "@remixicon/react"
 import { CalendlyButton } from "@/components/calendly-button"
 import { cn } from "@workspace/ui/lib/utils"
@@ -13,21 +13,14 @@ const navLinks = [
 ]
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
 
   return (
     <header
       className={cn(
         "fixed left-0 right-0 z-50 transition-all duration-300",
          "top-0 bg-background/80 backdrop-blur-md border-b border-border/60 shadow-[0_1px_0_rgba(0,0,0,0.04)]"
-          
       )}
     >
       <div className="max-w-350 mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
@@ -46,7 +39,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="px-3.5 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 rounded-md hover:bg-muted/60"
+              className="px-3.5 py-1.5 cursor-pointer text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 rounded-md hover:bg-muted/60"
             >
               {link.label}
             </a>
@@ -54,7 +47,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150">
+          <a href="/services" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150">
             View Services
           </a>
           <CalendlyButton label="Book Free Call" variant="primary" trackAs="navbar_cta" className="py-2 px-4" />
