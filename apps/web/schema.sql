@@ -23,9 +23,28 @@ CREATE TABLE IF NOT EXISTS posts (
   updated_at    DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Newsletter subscribers (replaces Resend audience)
+-- Website contact form submissions
+CREATE TABLE IF NOT EXISTS contacts (
+  id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name         VARCHAR(255) NOT NULL,
+  email        VARCHAR(255) NOT NULL,
+  company      VARCHAR(255) NOT NULL DEFAULT '',
+  project_type VARCHAR(255) NOT NULL DEFAULT '',
+  budget       VARCHAR(100)  NOT NULL DEFAULT '',
+  message      TEXT          NOT NULL,
+  created_at   DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_contacts_email (email),
+  INDEX idx_contacts_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Newsletter subscribers
 CREATE TABLE IF NOT EXISTS subscribers (
   id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   email      VARCHAR(255) NOT NULL UNIQUE,
-  created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
+  source     VARCHAR(80)  NOT NULL DEFAULT 'technest_newsletter',
+  created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_subscribers_created (created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Migration if subscribers existed without source column:
+-- ALTER TABLE subscribers ADD COLUMN source VARCHAR(80) NOT NULL DEFAULT 'technest_newsletter' AFTER email;

@@ -1,0 +1,8 @@
+node_modules
+.next
+**/.next
+**/node_modules
+graphify-out
+geo-seo-claude
+apps/web/graphify-out
+.git

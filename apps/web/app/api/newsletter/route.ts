@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { subscribeEmail } from "@/lib/api-client"
+import { sendNewsletterMail } from "@/lib/mail-client"
 
 export async function POST(req: NextRequest) {
   const { email } = await req.json()
@@ -9,10 +9,10 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await subscribeEmail(email)
+    await sendNewsletterMail(email)
   } catch (err) {
     console.error("[Newsletter] Subscription failed:", err)
-    // Don't expose internal errors to the client
+    return NextResponse.json({ error: "Internal error" }, { status: 500 })
   }
 
   return NextResponse.json({ success: true })

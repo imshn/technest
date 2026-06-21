@@ -50,6 +50,12 @@ export function AdminDashboard({ posts }: { posts: BlogPost[] }) {
           </div>
           <div className="flex items-center gap-3">
             <a
+              href="/admin/inbound"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Inbound leads
+            </a>
+            <a
               href="/blog"
               target="_blank"
               className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"

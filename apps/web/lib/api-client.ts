@@ -171,11 +171,4 @@ export async function deletePost(slug: string): Promise<boolean> {
   return true
 }
 
-// ── Newsletter ────────────────────────────────────────────────────────────────
 
-export async function subscribeEmail(email: string): Promise<void> {
-  await apiFetch<{ success: boolean }>("/newsletter", {
-    method: "POST",
-    body: JSON.stringify({ email, source: "technest_newsletter" }),
-  })
-}
