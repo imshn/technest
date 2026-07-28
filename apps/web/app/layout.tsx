@@ -9,6 +9,7 @@ import { Analytics, GTMNoScript } from "@/components/analytics"
 import { EngagementTracker } from "@/components/engagement-tracker"
 import { WhatsAppCTA } from "@/components/whatsapp-cta"
 import { SchemaMarkup } from "@/components/schema"
+import { WebMCPTools } from "@/components/webmcp-tools"
 import { cn } from "@workspace/ui/lib/utils"
 
 const geist = Geist({
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | TechNest",
   },
   description:
-    "AI-native agency building multi-agent systems, agentic workflows, N8n automation, SaaS, and web apps. Serving startups and enterprises in USA, UK, UAE, Kuwait, Saudi Arabia, Turkey, and Europe.",
+    "AI automation agency headquartered in Bengaluru, India, building multi-agent systems, agentic workflows, N8n automation, SaaS, and web apps for clients across India, the USA, and the Gulf — also serving the UK and Europe.",
   keywords: [
     // Core service terms
     "AI automation agency",
@@ -41,6 +42,37 @@ export const metadata: Metadata = {
     "n8n workflow automation",
     "SaaS development company",
     "custom AI agent development",
+    // India targeting — primary market
+    "AI automation agency India",
+    "AI development company India",
+    "AI agency near me India",
+    "n8n workflow automation company India",
+    "agentic AI development India",
+    "hire AI developers India",
+    "software development agency India",
+    "SaaS development company India",
+    "AI agency Bangalore",
+    "AI development company Bangalore",
+    "AI automation Bangalore",
+    "software agency Chennai",
+    "AI agency Chennai",
+    "AI automation agency Mumbai",
+    "AI development company Delhi",
+    "AI agency Gurugram",
+    "AI automation agency Hyderabad",
+    "AI development company Pune",
+    "software agency Noida",
+    // US targeting — primary market
+    "AI development agency USA",
+    "AI automation agency United States",
+    "hire AI development team USA",
+    "enterprise AI solutions America",
+    "AI agency New York",
+    "AI agency San Francisco",
+    "AI agency Austin",
+    "AI automation company US",
+    "n8n automation agency USA",
+    "hire AI agency USA",
     // Gulf targeting — primary market
     "AI agency Dubai",
     "AI automation UAE",
@@ -55,16 +87,7 @@ export const metadata: Metadata = {
     "AI development company Istanbul",
     "software agency Qatar",
     "GCC AI automation agency",
-    // US targeting — primary market
-    "AI development agency USA",
-    "AI automation agency United States",
-    "hire AI development team USA",
-    "enterprise AI solutions America",
-    "AI agency New York",
-    "AI agency San Francisco",
-    "AI automation company US",
-    "n8n automation agency USA",
-    // UK + Europe targeting
+    // UK + Europe targeting — secondary market
     "AI agency UK",
     "AI automation agency London",
     "software development agency UK",
@@ -72,11 +95,6 @@ export const metadata: Metadata = {
     "AI agency Netherlands",
     "AI automation Europe",
     "SaaS development company UK",
-    // India — Bangalore + Chennai only
-    "AI agency Bangalore",
-    "AI development company Bangalore",
-    "software agency Chennai",
-    "AI automation Bangalore",
     // Intent-based (high commercial — global)
     "hire AI automation agency",
     "agentic workflow development company",
@@ -106,13 +124,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    alternateLocale: ["en_GB", "ar_KW", "ar_AE", "ar_SA", "tr_TR"],
+    locale: "en_IN",
+    alternateLocale: ["en_US", "en_GB", "ar_KW", "ar_AE", "ar_SA", "tr_TR"],
     url: siteUrl,
     siteName: "TechNest",
     title: "TechNest — AI Automation & Software Development Agency",
     description:
-      "Build intelligence into everything you ship. Multi AI Agents, Agentic Workflows, N8n Automation, SaaS & App Development, Graphic Design, and AI-powered Digital Marketing.",
+      "Build intelligence into everything you ship. Multi AI Agents, Agentic Workflows, N8n Automation, SaaS & App Development, Graphic Design, and AI-powered Digital Marketing — for businesses in India, the USA, and the Gulf, and worldwide.",
     images: [
       {
         url: `${siteUrl}/og-image.png`,
@@ -124,8 +142,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@technestdev",
-    creator: "@technestdev",
     title: "TechNest — AI Automation & Software Development Agency",
     description:
       "Multi AI Agents, Agentic Workflows, SaaS & App Development, and AI-powered Digital Marketing for ambitious businesses.",
@@ -134,6 +150,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
     languages: {
+      "en-IN": siteUrl,
       "en-US": siteUrl,
       "en-GB": siteUrl,
       "en-AE": siteUrl,
@@ -151,10 +168,11 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ?? "",
   },
   other: {
-    // Multi-region geo targeting — India, US, Gulf, Europe
-    "geo.region": "US, GB, AE, SA, KW, QA, TR, DE, NL, FR",
+    // Co-primary markets: India (HQ, .in domain), USA, and the Gulf
+    "geo.region": "IN",
+    "geo.placename": "Bengaluru, India",
     "DC.language": "en",
-    "DC.coverage": "Worldwide",
+    "DC.coverage": "India, United States, Gulf (UAE, Saudi Arabia, Kuwait, Qatar), Worldwide",
     "DC.subject": "AI Automation, Software Development, SaaS, Multi-Agent AI",
     // Structured citations for AI search engines
     "citation_author": "Shaan",
@@ -186,6 +204,7 @@ export default function RootLayout({
         <ThemeProvider>{children}</ThemeProvider>
         <WhatsAppCTA />
         <EngagementTracker />
+        <WebMCPTools />
         {/* Analytics — Google Tag Manager / GA4 / Google Ads */}
         <Analytics />
         {/* Vercel Analytics + Core Web Vitals */}

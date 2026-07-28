@@ -46,6 +46,17 @@ const nextConfig = {
           { key: "X-DNS-Prefetch-Control", value: "on" },
         ],
       },
+      // Agent discovery — RFC 8288 Link headers pointing to machine-readable resources
+      {
+        source: "/",
+        headers: [
+          {
+            key: "Link",
+            value:
+              '</llms.txt>; rel="llms-txt"; type="text/plain", </llms-full.txt>; rel="llms-txt"; type="text/plain", </sitemap.xml>; rel="sitemap"; type="application/xml"',
+          },
+        ],
+      },
       // Long-cache for static assets
       {
         source: "/_next/static/(.*)",
