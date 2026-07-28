@@ -29,7 +29,7 @@ type ServiceData = {
   metaDescription: string
 }
 
-const services: Record<string, ServiceData> = {
+export const services: Record<string, ServiceData> = {
   "multi-agent-ai-systems": {
     icon: RiRobotLine,
     title: "Multi-Agent AI Systems",
@@ -61,7 +61,7 @@ const services: Record<string, ServiceData> = {
       { q: "How long does a multi-agent project take?", a: "Most multi-agent systems take 6–10 weeks from discovery to production launch, depending on the number of agents and the complexity of integrations." },
       { q: "Can agents be integrated with our existing software?", a: "Yes. We connect agents to your CRM, databases, communication tools, and APIs. If it has a webhook or API, we can integrate it." },
     ],
-    metaTitle: "Multi-Agent AI Systems Development | TechNest",
+    metaTitle: "Multi-Agent AI Systems Development",
     metaDescription:
       "Build autonomous multi-agent AI pipelines that replace manual workflows. LangChain, OpenAI, Claude API — deployed on your infrastructure. Free strategy call.",
   },
@@ -95,7 +95,7 @@ const services: Record<string, ServiceData> = {
       { q: "What is the difference between agentic workflows and RPA?", a: "RPA follows rigid scripts. Agentic workflows use LLM reasoning to handle unstructured data, ambiguity, and edge cases that break traditional automation." },
       { q: "How do you handle sensitive or proprietary data?", a: "We sign NDA before engagement starts. Data stays in your infrastructure. We can deploy models that run fully on-premise if needed." },
     ],
-    metaTitle: "Agentic Workflow Development | TechNest",
+    metaTitle: "Agentic Workflow Development",
     metaDescription:
       "Replace repetitive decisions with intelligent AI agents. RAG, function calling, memory — agentic workflows built for your business data. Free strategy call.",
   },
@@ -129,7 +129,7 @@ const services: Record<string, ServiceData> = {
       { q: "Why N8n instead of Zapier or Make?", a: "N8n is self-hosted, which means no per-task billing, complete data privacy, and unlimited workflow complexity. For businesses running 10,000+ tasks per month, the cost savings are significant." },
       { q: "Do we need to manage the server ourselves?", a: "We handle the initial setup and configuration. We can also provide ongoing maintenance, or hand off full control to your team with documentation." },
     ],
-    metaTitle: "N8n Workflow Automation Development | TechNest",
+    metaTitle: "N8n Workflow Automation Development",
     metaDescription:
       "Self-hosted N8n automation to replace Zapier. Connect your entire SaaS stack with zero per-task fees. Built and deployed by TechNest. Free strategy call.",
   },
@@ -163,7 +163,7 @@ const services: Record<string, ServiceData> = {
       { q: "How long does a SaaS MVP take to build?", a: "A focused MVP with auth, billing, and core features typically takes 6–8 weeks. Scope drives timeline — we always start by cutting features to what's essential for first customers." },
       { q: "Do you handle design as well as development?", a: "Yes. We deliver Figma designs before development starts. UI is included in SaaS engagements." },
     ],
-    metaTitle: "SaaS Platform Development Agency | TechNest",
+    metaTitle: "SaaS Platform Development Agency",
     metaDescription:
       "Full-stack SaaS development with Next.js, Supabase, and Stripe. Multi-tenant, production-ready, and shipped in weeks. Free strategy call.",
   },
@@ -196,7 +196,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       { q: "What stack do you use for web app development?", a: "Next.js App Router, TypeScript, Tailwind CSS, Postgres (via Supabase or Railway), and Vercel or AWS for deployment. We adjust based on your constraints." },
     ],
-    metaTitle: "Web App Development Agency | TechNest",
+    metaTitle: "Web App Development Agency",
     metaDescription:
       "Custom web app development with Next.js, React, and Postgres. Fast, scalable, TypeScript-first. Built by TechNest. Free strategy call.",
   },
@@ -229,7 +229,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       { q: "Do you build native Swift/Kotlin apps or cross-platform?", a: "We build with React Native and Expo for most projects. This gives 95% of the native experience at a fraction of the cost and timeline. We recommend native only when the app requires deep OS-level integrations." },
     ],
-    metaTitle: "Mobile App Development Agency | TechNest",
+    metaTitle: "Mobile App Development Agency",
     metaDescription:
       "iOS and Android mobile app development with React Native and Expo. App Store launch included. Built by TechNest. Free strategy call.",
   },
@@ -262,7 +262,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       { q: "When would you choose Tauri over Electron?", a: "Tauri produces significantly smaller binaries (2–10MB vs 100MB+) and uses the OS webview instead of bundling Chromium. We recommend Tauri unless you need maximum browser API compatibility or have existing Electron code." },
     ],
-    metaTitle: "Desktop App Development Agency | TechNest",
+    metaTitle: "Desktop App Development Agency",
     metaDescription:
       "Cross-platform desktop app development with Tauri and Electron. Windows, macOS, Linux. Code-signed installers. Built by TechNest. Free strategy call.",
   },
@@ -295,7 +295,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       { q: "Do you work on design-only projects without development?", a: "Yes. Graphic design and brand identity are standalone services. We also offer UI/UX design handoffs ready for any development team." },
     ],
-    metaTitle: "Graphic Design Services | TechNest",
+    metaTitle: "Graphic Design Services",
     metaDescription:
       "Logo design, brand identity, UI kits, and pitch decks. Figma-based, product-thinking approach. Delivered by TechNest. Free strategy call.",
   },
@@ -329,7 +329,7 @@ const services: Record<string, ServiceData> = {
       { q: "How long before we see results from SEO?", a: "Technical fixes can show results in 4–8 weeks. Content and authority-building typically shows meaningful organic growth at 3–6 months. We give you leading indicators (rankings, crawl health) before traffic moves." },
       { q: "Do you manage paid ads as well?", a: "We focus exclusively on organic channels — SEO, content, and CRO. For paid media, we can recommend specialists who complement an organic-first strategy." },
     ],
-    metaTitle: "Digital Marketing & SEO Agency | TechNest",
+    metaTitle: "Digital Marketing & SEO Agency",
     metaDescription:
       "Technical SEO, programmatic content, and CRO for sustainable organic growth. No ad spend dependencies. Built by TechNest. Free strategy call.",
   },
@@ -360,8 +360,6 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
       card: "summary_large_image",
       title: svc.metaTitle,
       description: svc.metaDescription,
-      site: "@technestdev",
-      creator: "@technestdev",
       images: ["https://technestsolutions.in/og-image.png"],
     },
   }

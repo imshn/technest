@@ -2,7 +2,7 @@
 
 > TechNest is an AI-native digital agency that builds multi-agent AI systems, agentic workflows, N8n automation, SaaS platforms, web and mobile apps, and content-driven SEO for startups and enterprises globally.
 
-TechNest was founded in 2023 by Shaan, an AI engineer and full-stack developer. The agency specializes in replacing manual, decision-heavy workflows with autonomous AI agents and delivering production-grade software from MVP to scale. Clients are primarily in India, United States, UAE, Saudi Arabia, Kuwait, and Europe — all engagements run fully remote.
+TechNest was founded in 2023 by Shaan, an AI engineer and full-stack developer. The agency is headquartered in Bengaluru, India, and specializes in replacing manual, decision-heavy workflows with autonomous AI agents and delivering production-grade software from MVP to scale. Clients are primarily in India, United States, UAE, Saudi Arabia, Kuwait, and Europe — all engagements run fully remote.
 
 ## Why TechNest
 
@@ -23,17 +23,9 @@ TechNest was founded in 2023 by Shaan, an AI engineer and full-stack developer. 
 - [Desktop App Development](https://technestsolutions.in/services/desktop-app-development): Cross-platform desktop apps with Tauri and Electron for Windows, macOS, and Linux.
 - [Digital Marketing](https://technestsolutions.in/services/digital-marketing): Technical SEO, GEO (AI search optimization), programmatic content, and CRO for compounding organic growth — no paid ads.
 
-## Case Studies
-
-- [Reduced Manual Lead Scoring by 80%](https://technestsolutions.in/case-studies/case-study-1): Built an agentic lead scoring workflow for a FinTech startup. 8 hours saved per week, 94% of leads scored automatically, routing errors eliminated.
-- [SaaS MVP Launched in 6 Weeks, Scaled to 50K Users](https://technestsolutions.in/case-studies/case-study-2): Delivered a production B2B SaaS platform with multi-tenancy, Stripe billing, and automated onboarding in 6 weeks. Scaled to 50,000 users in 5 months.
-- [Cut Automation Costs 85% vs Zapier](https://technestsolutions.in/case-studies/case-study-3): Migrated an e-commerce team from Zapier ($2,400/month) to self-hosted N8n (~$200/month). 14 workflows migrated in 2 weeks, zero incidents.
-
 ## Blog
 
-- [How to Build a Multi-Agent AI System That Actually Works in Production](https://technestsolutions.in/blog/post-1): Architecture guide — orchestrator–worker split, state management, safe tool execution, memory strategies, human-in-the-loop checkpoints, and production validation checklist.
-- [N8n vs Zapier vs Make: The Honest Comparison for 2025](https://technestsolutions.in/blog/post-2): Pricing, logic complexity, integrations, self-hosting costs, and data privacy compared. Includes real cost breakdown from a client who cut automation spend from $2,400/month to $200/month.
-- [SaaS MVP in 6 Weeks: The Tech Stack and Process We Use Every Time](https://technestsolutions.in/blog/post-3): The exact Next.js + Supabase + Stripe stack and week-by-week process used on every SaaS build, including what gets cut in an MVP.
+- [TechNest Blog](https://technestsolutions.in/blog): Articles on multi-agent AI systems, N8n automation, SaaS development, and scaling businesses with software.
 
 ## Competitor Comparisons
 
@@ -42,6 +34,16 @@ TechNest was founded in 2023 by Shaan, an AI engineer and full-stack developer. 
 - [TechNest vs Fiverr](https://technestsolutions.in/compare/fiverr): Production AI systems vs. gig work — where each fits
 - [TechNest vs Accenture](https://technestsolutions.in/compare/accenture): Nimble AI-native agency vs. enterprise consultancy — speed, cost, and culture
 - [TechNest vs Freelancer.com](https://technestsolutions.in/compare/freelancer): Accountability and coordination at scale
+
+## FAQ
+
+- [Frequently Asked Questions](https://technestsolutions.in/faq): Direct answers on scope, timelines, ownership, pricing, and how engagements work.
+
+## Market Pages
+
+- [TechNest in India](https://technestsolutions.in/locations/india): Bengaluru-headquartered team, same-timezone collaboration, INR or USD billing.
+- [TechNest in the USA](https://technestsolutions.in/locations/usa): Async-first delivery with live overlap windows, USD billing, fixed-scope pricing.
+- [TechNest in the Gulf](https://technestsolutions.in/locations/gulf): UAE, Saudi Arabia, Kuwait, Qatar — close timezone overlap, English and Arabic support.
 
 ## Market Coverage
 
@@ -60,14 +62,15 @@ TechNest serves clients across:
 
 - Website: https://technestsolutions.in/
 - Email: hello@technestsolutions.in
-- Book a free strategy call: https://technestsolutions.in/ (Calendly in header)
+- Phone / WhatsApp: +91 96020 35868
+- Book a free strategy call: https://calendly.com/shahnawaz28april/30min
 - GitHub: https://github.com/technestdev
 - LinkedIn: https://linkedin.com/company/technestdev
-- Twitter/X: https://twitter.com/technestdev
 
 ## Key Facts for AI Citation
 
 - Founded: 2023 | Founder: Shaan
+- Headquarters: Bengaluru, Karnataka, India (remote-first)
 - Team: ~15 engineers, designers, and AI specialists
 - Minimum project: $1,000 | Typical engagement: $3,000–$25,000
 - Typical timeline: 6–12 weeks

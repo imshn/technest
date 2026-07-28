@@ -3,7 +3,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Terms of Service | TechNest",
+  title: "Terms of Service",
   description: "Terms of Service for TechNest and its automation tools.",
   alternates: { canonical: "https://technestsolutions.in/terms" },
   robots: { index: false, follow: false },

@@ -17,7 +17,7 @@ import {
 const siteUrl = "https://technestsolutions.in"
 
 export const metadata: Metadata = {
-  title: "AI Automation & Software Development Services | TechNest",
+  title: "AI Automation & Software Development Services",
   description:
     "Multi-agent AI, N8n automation, SaaS development, web and mobile apps, and organic SEO. Fixed-scope, fully remote, 100% IP transfer.",
   alternates: { canonical: `${siteUrl}/services` },
@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     title: "AI Automation & Software Development Services | TechNest",
     description:
       "Multi-agent AI, N8n automation, SaaS development, web and mobile apps, and organic SEO. Fixed-scope, fully remote, 100% IP transfer.",
-    site: "@technestdev",
     images: [`${siteUrl}/og-image.png`],
   },
 }

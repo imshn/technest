@@ -23,7 +23,7 @@ type CompareData = {
   metaDescription: string
 }
 
-const comparisons: Record<string, CompareData> = {
+export const comparisons: Record<string, CompareData> = {
   upwork: {
     competitor: "Upwork",
     headline: "TechNest vs Upwork",
@@ -157,8 +157,6 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
       card: "summary_large_image",
       title: data.metaTitle,
       description: data.metaDescription,
-      site: "@technestdev",
-      creator: "@technestdev",
       images: ["https://technestsolutions.in/og-image.png"],
     },
   }

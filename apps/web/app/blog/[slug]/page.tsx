@@ -26,7 +26,7 @@ export async function generateMetadata(props: {
   const canonical = `${siteUrl}/blog/${slug}`
 
   return {
-    title: `${meta.title} | TechNest Blog`,
+    title: meta.title,
     description: meta.seoExcerpt || meta.excerpt,
     keywords: [meta.tag, "AI automation", "workflow automation", "TechNest", "agentic AI", "n8n automation"],
     authors: [{ name: "TechNest", url: siteUrl }],
@@ -152,7 +152,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
                     <span className="w-1 h-1 rounded-full bg-border" />
                     <span className="flex items-center gap-1.5"><RiTimeLine size={13} />{meta.readTime}</span>
                     <span className="w-1 h-1 rounded-full bg-border" />
-                    <span className="font-medium text-foreground">TechNest</span>
+                    <span className="font-medium text-foreground">Shaan, TechNest</span>
                   </div>
                   <BlogShareButtons title={meta.title} slug={slug} />
                 </div>

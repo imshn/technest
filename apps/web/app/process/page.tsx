@@ -14,13 +14,13 @@ import {
 const siteUrl = "https://technestsolutions.in"
 
 export const metadata: Metadata = {
-  title: "Our Process | TechNest",
+  title: "Our Process",
   description:
     "See how TechNest takes AI automation and software projects from discovery to launch with fixed scope, weekly demos, and full handoff.",
   alternates: { canonical: `${siteUrl}/process` },
 }
 
-const steps = [
+export const steps = [
   {
     number: "01",
     title: "Discovery Call",
@@ -59,7 +59,7 @@ const steps = [
   },
 ]
 
-const principles = [
+export const principles = [
   "Fixed-scope pricing before build starts",
   "Weekly demos with working software",
   "Async-first communication with clear decisions",

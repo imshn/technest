@@ -10,7 +10,7 @@ import {
 } from "@remixicon/react"
 
 export const metadata: Metadata = {
-  title: "Contact | TechNest",
+  title: "Contact",
   description: "Tell us what you're building. We'll map your highest-ROI automation opportunity in a free 30-minute strategy call.",
   alternates: { canonical: "https://technestsolutions.in/contact" },
 }
@@ -126,9 +126,10 @@ export default function ContactPage() {
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-zinc-600">
               Prefer email? <a href="mailto:shaan@technestsolutions.in" className="text-zinc-400 hover:text-white transition-colors">shaan@technestsolutions.in</a>
+              {" "}· Call/WhatsApp <a href="tel:+919602035868" className="text-zinc-400 hover:text-white transition-colors">+91 96020 35868</a>
             </p>
             <a
-              href="https://cal.com"
+              href="https://calendly.com/shahnawaz28april/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors"

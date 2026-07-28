@@ -19,6 +19,9 @@ const serviceSlugs = [
 // High commercial-intent comparison pages
 const compareSlugs = ["upwork", "toptal", "fiverr", "accenture", "freelancer"]
 
+// Co-primary market landing pages
+const locationSlugs = ["india", "usa", "gulf"]
+
 type SitemapEntry = MetadataRoute.Sitemap[number]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -95,6 +98,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/faq`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${siteUrl}/process`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
 
     // ── Tier 3: Individual service pages (money pages — highest intent) ──────
     ...serviceSlugs.map((slug) => ({
@@ -102,6 +123,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.9,
+    })),
+
+    // ── Tier 3b: Market landing pages (India / USA / Gulf) ───────────────────
+    ...locationSlugs.map((slug) => ({
+      url: `${siteUrl}/locations/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
     })),
 
     // ── Tier 4: Competitor comparison pages (commercial intent) ─────────────

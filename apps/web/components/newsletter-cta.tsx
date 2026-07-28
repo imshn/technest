@@ -153,19 +153,6 @@ export function NewsletterCTA() {
         </div>
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'NewsletterSignup',
-            name: 'TechNest Weekly Newsletter',
-            description: 'AI agents and SaaS insights delivered every Tuesday — patterns, case studies, and tools.',
-            url: 'https://technestsolutions.in/',
-            contactPoint: { '@type': 'ContactPoint', contactType: 'Newsletter', areaServed: 'Worldwide' },
-          }),
-        }}
-      />
     </section>
   )
 }

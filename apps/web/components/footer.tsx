@@ -1,4 +1,4 @@
-import { RiGithubLine, RiLinkedinBoxLine, RiInstagramLine } from "@remixicon/react"
+import { RiGithubLine, RiLinkedinBoxLine } from "@remixicon/react"
 
 const serviceLinks = [
   { label: "Multi-Agent AI Systems", href: "/services/multi-agent-ai-systems" },
@@ -18,6 +18,7 @@ const compareLinks = [
 ]
 
 const companyLinks = [
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
   { label: "FAQ", href: "/faq" },
@@ -25,11 +26,17 @@ const companyLinks = [
   { label: "AI Automation Statistics", href: "/ai-automation-statistics" },
 ]
 
+const marketLinks = [
+  { label: "TechNest in India", href: "/locations/india" },
+  { label: "TechNest in USA", href: "/locations/usa" },
+  { label: "TechNest in the Gulf", href: "/locations/gulf" },
+]
+
 export function Footer() {
   return (
     <footer className="border-t border-border/60 bg-background">
       <div className="max-w-350 mx-auto px-6 md:px-10">
-        <div className="py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[220px_1fr_1fr_1fr] gap-10">
+        <div className="py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[200px_1fr_1fr_1fr_1fr] gap-10">
           <div className="flex flex-col gap-4">
             <a href="/" className="flex items-center gap-2.5 group w-fit">
               <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
@@ -45,7 +52,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-3 pt-1">
               <a
-                href="https://github.com"
+                href="https://github.com/technestdev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors duration-150"
@@ -54,22 +61,13 @@ export function Footer() {
                 <RiGithubLine size={18} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/company/technestdev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors duration-150"
                 aria-label="LinkedIn"
               >
                 <RiLinkedinBoxLine size={18} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors duration-150"
-                aria-label="Instagram"
-              >
-                <RiInstagramLine size={18} />
               </a>
             </div>
           </div>
@@ -118,6 +116,19 @@ export function Footer() {
                   Contact
                 </a>
               </li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <p className="text-xs font-semibold text-foreground tracking-wide uppercase">Markets</p>
+            <ul className="flex flex-col gap-2.5">
+              {marketLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

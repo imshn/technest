@@ -7,13 +7,13 @@ import { RiArrowRightLine, RiQuestionAnswerLine } from "@remixicon/react"
 const siteUrl = "https://technestsolutions.in"
 
 export const metadata: Metadata = {
-  title: "FAQ | TechNest",
+  title: "FAQ",
   description:
     "Answers to common questions about TechNest projects, pricing, timelines, ownership, N8n automation, AI agents, and remote collaboration.",
   alternates: { canonical: `${siteUrl}/faq` },
 }
 
-const faqs = [
+export const faqs = [
   {
     q: "What types of businesses do you typically work with?",
     a: "We work with startups, scale-ups, and mid-market companies across SaaS, fintech, operations, healthcare, and e-commerce. Our clients are usually at the point where manual processes are visibly slowing down growth.",
@@ -48,9 +48,20 @@ const faqs = [
   },
 ]
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+}
+
 export default function FAQPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
       <main className="min-h-dvh pt-24 pb-24">
         <div className="max-w-350 mx-auto px-6 md:px-10">

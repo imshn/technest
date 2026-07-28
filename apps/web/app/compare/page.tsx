@@ -25,7 +25,6 @@ export const metadata: Metadata = {
     title: "TechNest vs Alternatives — Agency Comparisons",
     description:
       "How TechNest compares to Upwork, Toptal, Fiverr, Accenture, and Freelancer.com for AI automation and software development projects.",
-    site: "@technestdev",
     images: [`${siteUrl}/og-image.png`],
   },
 }

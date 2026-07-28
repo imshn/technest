@@ -3,7 +3,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | TechNest",
+  title: "Privacy Policy",
   description: "Privacy Policy for TechNest and its automation tools.",
   alternates: { canonical: "https://technestsolutions.in/privacy" },
   robots: { index: false, follow: false },

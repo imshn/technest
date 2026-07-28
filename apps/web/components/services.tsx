@@ -161,12 +161,16 @@ export function Services() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
+              "@type": "ItemList",
               "itemListElement": services.map((svc, idx) => ({
                 "@type": "ListItem",
                 "position": idx + 1,
-                "name": `${svc.title}: ${svc.tagline} — ${svc.tech.join(", ")}`,
-                "item": `https://technestsolutions.in/services/${svc.slug}`,
+                "item": {
+                  "@type": "Service",
+                  "name": svc.title,
+                  "description": `${svc.tagline} — ${svc.tech.join(", ")}`,
+                  "url": `https://technestsolutions.in/services/${svc.slug}`,
+                },
               })),
             }),
           }}

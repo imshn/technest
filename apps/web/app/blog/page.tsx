@@ -7,7 +7,7 @@ import type { ApiPost, Pagination } from "@/components/blog-index"
 const BLOG_API = "https://imshn.cloud/api/blog"
 
 export const metadata: Metadata = {
-  title: "Blog — AI Automation & Software Development Insights | TechNest",
+  title: "Blog — AI Automation & Software Development Insights",
   description:
     "Practical articles on multi-agent AI systems, N8n automation, SaaS development, and scaling businesses with software. Written by the TechNest team.",
   alternates: { canonical: "https://technestsolutions.in/blog" },
