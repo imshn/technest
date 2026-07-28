@@ -35,6 +35,7 @@ export function ContactPageForm() {
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       projectType: (form.elements.namedItem("projectType") as HTMLSelectElement).value,
       budget: (form.elements.namedItem("budget") as HTMLSelectElement).value,
@@ -109,10 +110,16 @@ export function ContactPageForm() {
           </div>
         </div>
 
-        {/* Email */}
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="cpf-email" className="text-xs font-medium text-zinc-400">Work email <span className="text-primary">*</span></label>
-          <input id="cpf-email" name="email" type="email" required placeholder="you@company.com" className={inputBase} />
+        {/* Email + Phone */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="cpf-email" className="text-xs font-medium text-zinc-400">Work email <span className="text-primary">*</span></label>
+            <input id="cpf-email" name="email" type="email" required placeholder="you@company.com" className={inputBase} />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="cpf-phone" className="text-xs font-medium text-zinc-400">Phone <span className="text-zinc-600">(optional)</span></label>
+            <input id="cpf-phone" name="phone" type="tel" placeholder="+1 555 555 5555" className={inputBase} />
+          </div>
         </div>
 
         {/* Type + Budget */}

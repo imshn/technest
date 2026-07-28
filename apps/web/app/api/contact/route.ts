@@ -3,13 +3,13 @@ import { sendContactMail } from "@/lib/mail-client"
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, company, projectType, budget, message } = await req.json()
+    const { name, email, company, projectType, budget, message, phone } = await req.json()
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    await sendContactMail({ name, email, company, projectType, budget, message })
+    await sendContactMail({ name, email, company, projectType, budget, message, phone })
 
     return NextResponse.json({ ok: true })
   } catch (err) {
