@@ -82,7 +82,7 @@ export function parseContactContent(content: string): {
   }
   const msgIdx = content.indexOf("Message:")
   const message = msgIdx >= 0
-    ? content.slice(msgIdx + 8).split("\nFollow-up:")[0].trim()
+    ? (content.slice(msgIdx + 8).split("\nFollow-up:")[0] ?? "").trim()
     : ""
 
   return {
