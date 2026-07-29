@@ -49,42 +49,6 @@ function mailTo() {
   return process.env.MAIL_NOTIFY_TO ?? "shahnawaz28april@gmail.com"
 }
 
-export async function sendContactDirect(data: {
-  name: string
-  email: string
-  message: string
-  company?: string
-  projectType?: string
-  budget?: string
-}): Promise<void> {
-  const subject = `New contact: ${data.name}${data.company ? ` · ${data.company}` : ""}`
-  const rows = [
-    row("Name", data.name),
-    row("Email", data.email),
-    row("Company", data.company ?? ""),
-    row("Project type", data.projectType ?? ""),
-    row("Budget", data.budget ?? ""),
-  ]
-    .filter(Boolean)
-    .join("")
-
-  const html = wrap(
-    "New project brief",
-    `<table width="100%" cellpadding="0" cellspacing="0">${rows}</table>
-<p style="margin:20px 0 8px;font-size:12px;color:#71717a;text-transform:uppercase;letter-spacing:0.06em">Message</p>
-<p style="margin:0;padding:16px;background:#27272a;border-radius:8px;color:#e4e4e7;font-size:14px;line-height:1.6;white-space:pre-wrap">${esc(data.message)}</p>`,
-  )
-
-  await getTransport().sendMail({
-    from: `"TechNest" <${mailFrom()}>`,
-    to: mailTo(),
-    replyTo: data.email,
-    subject,
-    html,
-    text: [subject, "", `Name: ${data.name}`, `Email: ${data.email}`, data.message].join("\n"),
-  })
-}
-
 export async function sendNewsletterDirect(email: string): Promise<void> {
   const subject = `Newsletter signup: ${email}`
   const html = wrap(

@@ -1,8 +1,8 @@
 /**
- * TechNest mail — SMTP for delivery, JARVIS LanceDB for storage.
- * Server-side only.
+ * TechNest mail — EmailJS for the contact form, SMTP for the newsletter,
+ * JARVIS LanceDB + MySQL for storage. Server-side only.
  */
-import { sendContactDirect, sendNewsletterDirect } from "./mail-send"
+import { sendNewsletterDirect } from "./mail-send"
 import { isJarvisConfigured, jarvisFetch } from "./jarvis-client"
 import { storeContact as storeContactDb, storeSubscriber as storeSubscriberDb } from "./inbound-store"
 import { isEmailJsConfigured, sendContactNotificationViaEmailJS, sendAutoReplyViaEmailJS } from "./emailjs"
@@ -57,39 +57,8 @@ async function persistContactEverywhere(data: ContactPayload): Promise<void> {
 }
 
 export async function sendContactMail(data: ContactPayload): Promise<void> {
-  if (isJarvisConfigured()) {
-    try {
-      await jarvisFetch<{ ok: boolean }>("/contact", {
-        body: {
-          name: data.name,
-          email: data.email,
-          message: data.message,
-          company: data.company,
-          projectType: data.projectType,
-          budget: data.budget,
-        },
-      })
-      await persistContactEverywhere(data)
-      return
-    } catch (err) {
-      console.error("[mail] JARVIS contact+mail failed, falling back to SMTP:", err)
-      await storeContactInJarvis(data)
-    }
-  }
-
-  if (canUseSmtp()) {
-    try {
-      await sendContactDirect(data)
-      await storeContactInJarvis(data)
-      await persistContactEverywhere(data)
-      return
-    } catch (err) {
-      console.error("[mail] SMTP failed, falling back to EmailJS:", err)
-    }
-  }
-
   if (!isEmailJsConfigured()) {
-    throw new Error("Set JARVIS_API_URL + TECHNEST_API_KEY, SMTP_PASS, or EMAILJS_* for mail.")
+    throw new Error("Set EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, and EMAILJS_PUBLIC_KEY for mail.")
   }
 
   const emailJsData = { name: data.name, email: data.email, message: data.message, phone: data.phone, title: data.projectType }
