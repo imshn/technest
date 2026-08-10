@@ -34,6 +34,13 @@ export default async function BlogPage() {
     <>
       <Navbar />
       <main className="min-h-dvh pt-24 pb-24">
+        <div className="max-w-350 mx-auto px-6 md:px-10">
+          <nav aria-label="Breadcrumb" className="pt-10 pb-2 flex items-center gap-2 text-xs text-muted-foreground">
+            <a href="/" className="hover:text-foreground transition-colors duration-150">Home</a>
+            <span className="text-border">/</span>
+            <span className="text-foreground font-medium">Blog</span>
+          </nav>
+        </div>
         <BlogIndex initialPosts={initialPosts} initialPagination={initialPagination} />
       </main>
       <Footer />

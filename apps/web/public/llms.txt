@@ -35,6 +35,10 @@ TechNest was founded in 2023 by Shaan, an AI engineer and full-stack developer. 
 - [TechNest vs Accenture](https://technestsolutions.in/compare/accenture): Nimble AI-native agency vs. enterprise consultancy — speed, cost, and culture
 - [TechNest vs Freelancer.com](https://technestsolutions.in/compare/freelancer): Accountability and coordination at scale
 
+## Case Studies
+
+- [Case Studies](https://technestsolutions.in/case-studies): Client results from recent engagements — agentic workflows, SaaS launches, and N8n migrations, with the metrics each produced.
+
 ## FAQ
 
 - [Frequently Asked Questions](https://technestsolutions.in/faq): Direct answers on scope, timelines, ownership, pricing, and how engagements work.
@@ -44,6 +48,7 @@ TechNest was founded in 2023 by Shaan, an AI engineer and full-stack developer. 
 - [TechNest in India](https://technestsolutions.in/locations/india): Bengaluru-headquartered team, same-timezone collaboration, INR or USD billing.
 - [TechNest in the USA](https://technestsolutions.in/locations/usa): Async-first delivery with live overlap windows, USD billing, fixed-scope pricing.
 - [TechNest in the Gulf](https://technestsolutions.in/locations/gulf): UAE, Saudi Arabia, Kuwait, Qatar — close timezone overlap, English and Arabic support.
+- [TechNest in the UK & Europe](https://technestsolutions.in/locations/uk-europe): UK, Germany, Netherlands, France — GMT/CET morning overlap, GDPR-aware data handling.
 
 ## Market Coverage
 

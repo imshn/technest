@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 
 // Paths with a markdown counterpart under app/md/[[...slug]]/route.ts
-const MARKDOWN_ROOTS = ["about", "faq", "process", "contact", "services", "locations", "compare", "ai-automation-statistics", "blog"]
+const MARKDOWN_ROOTS = ["about", "faq", "process", "contact", "services", "locations", "compare", "case-studies", "ai-automation-statistics", "blog"]
 
 function hasMarkdownVersion(pathname: string) {
   if (pathname === "/") return true

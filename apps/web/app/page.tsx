@@ -5,6 +5,7 @@ import { TrustBar } from "@/components/trust-bar"
 import { Stats } from "@/components/stats"
 import { Services } from "@/components/services"
 import { Process } from "@/components/process"
+import { CaseStudiesPreview } from "@/components/case-studies-preview"
 import { BlogPreview } from "@/components/blog-preview"
 import { NewsletterCTA } from "@/components/newsletter-cta"
 import { FAQ, faqs } from "@/components/faq"
@@ -32,6 +33,7 @@ export default function Page() {
       <Stats />
       <Services />
       <Process />
+      <CaseStudiesPreview />
       {/* Testimonials paused for now. */}
       <BlogPreview />
       <NewsletterCTA />

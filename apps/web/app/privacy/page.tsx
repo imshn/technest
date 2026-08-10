@@ -19,7 +19,13 @@ export default function PrivacyPage() {
       <Navbar />
       <main className="min-h-dvh pt-24 pb-24">
         <div className="max-w-180 mx-auto px-6 md:px-10">
-          <div className="pt-10 pb-16">
+          <nav aria-label="Breadcrumb" className="pt-10 pb-8 flex items-center gap-2 text-xs text-muted-foreground">
+            <a href="/" className="hover:text-foreground transition-colors duration-150">Home</a>
+            <span className="text-border">/</span>
+            <span className="text-foreground font-medium">Privacy Policy</span>
+          </nav>
+
+          <div className="pb-16">
             <p className="text-xs font-medium text-primary tracking-widest uppercase mb-3">Legal</p>
             <h1 className="text-3xl md:text-4xl font-semibold tracking-[-0.03em] text-foreground mb-3">
               Privacy Policy

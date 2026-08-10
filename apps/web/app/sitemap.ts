@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next"
 import { getPosts } from "@/lib/blog-store"
+import { caseStudies } from "@/components/case-studies-preview"
 
 const siteUrl = "https://technestsolutions.in"
 
@@ -136,6 +137,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ── Tier 4: Competitor comparison pages (commercial intent) ─────────────
     ...compareSlugs.map((slug) => ({
       url: `${siteUrl}/compare/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+
+    // ── Tier 4b: Case studies (proof / commercial intent) ────────────────────
+    {
+      url: `${siteUrl}/case-studies`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...caseStudies.map((study) => ({
+      url: `${siteUrl}/case-studies/${study.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.75,

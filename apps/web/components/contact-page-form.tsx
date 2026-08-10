@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { RiArrowRightLine, RiCheckLine, RiLoaderLine } from "@remixicon/react"
+import { useRouter } from "next/navigation"
+import { RiArrowRightLine, RiLoaderLine } from "@remixicon/react"
 
 type Status = "idle" | "loading" | "success" | "error"
 
@@ -23,6 +24,7 @@ const budgets = [
 ]
 
 export function ContactPageForm() {
+  const router = useRouter()
   const [status, setStatus] = useState<Status>("idle")
   const [error, setError] = useState("")
 
@@ -49,7 +51,7 @@ export function ContactPageForm() {
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error()
-      setStatus("success")
+      router.push("/thank-you")
     } catch {
       setStatus("error")
       setError("Something went wrong. Please try again.")
@@ -57,34 +59,6 @@ export function ContactPageForm() {
   }
 
   const inputBase = "w-full rounded-xl border border-zinc-700/70 bg-zinc-800/50 px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/15 transition-all duration-200"
-
-  if (status === "success") {
-    return (
-      <div
-        className="rounded-2xl border border-zinc-800 bg-zinc-900 p-10 flex flex-col items-start gap-6 min-h-[520px] justify-center"
-        style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04), 0 0 0 1px rgba(0,0,0,0.2)" }}
-      >
-        <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-          <RiCheckLine size={26} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <p className="text-2xl font-semibold tracking-tight text-white">Brief received.</p>
-          <p className="text-sm text-zinc-400 leading-relaxed max-w-[38ch]">
-            We&apos;ll read through it and reply within 24 hours with follow-up questions or a rough scope.
-          </p>
-        </div>
-        <div className="flex flex-col gap-2.5 text-sm text-zinc-500">
-          <p>In the meantime:</p>
-          <a href="/blog" className="text-zinc-300 hover:text-white transition-colors underline underline-offset-4 decoration-zinc-700">
-            Read how we approach AI automation projects
-          </a>
-          <a href="/services" className="text-zinc-300 hover:text-white transition-colors underline underline-offset-4 decoration-zinc-700">
-            Browse our full list of services
-          </a>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div

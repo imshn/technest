@@ -3,6 +3,7 @@ import path from "node:path"
 import { services } from "@/app/services/[slug]/page"
 import { markets } from "@/app/locations/[slug]/page"
 import { comparisons } from "@/app/compare/[slug]/page"
+import { caseStudies } from "@/components/case-studies-preview"
 import { faqs } from "@/app/faq/page"
 import { steps, principles } from "@/app/process/page"
 import { facts, stack } from "@/app/about/page"
@@ -146,6 +147,31 @@ ${rows}
 
 ## Verdict
 ${c.verdict}`)
+  }
+
+  if (section === "case-studies") {
+    if (!sub) {
+      const list = caseStudies
+        .map((s) => `## [${s.title}](${siteUrl}/case-studies/${s.slug})\n${s.industry} — ${s.metricValue} ${s.metric}`)
+        .join("\n\n")
+      return md(`# TechNest Case Studies\n\n${list}`)
+    }
+    const s = caseStudies.find((cs) => cs.slug === sub)
+    if (!s) return notFoundMd()
+    return md(`# ${s.title}
+
+**${s.company}** (${s.industry}) — **${s.metricValue} ${s.metric}**
+
+## The problem
+${s.challenge}
+
+## What we built
+${s.result}
+
+## Services used
+${s.services.join(", ")}
+
+[Book a free strategy call](${siteUrl}/contact)`)
   }
 
   if (section === "ai-automation-statistics" && !sub) {

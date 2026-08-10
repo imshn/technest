@@ -21,6 +21,7 @@ const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
   { label: "AI Automation Statistics", href: "/ai-automation-statistics" },
