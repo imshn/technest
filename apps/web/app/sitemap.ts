@@ -20,7 +20,7 @@ const serviceSlugs = [
 const compareSlugs = ["upwork", "toptal", "fiverr", "accenture", "freelancer"]
 
 // Co-primary market landing pages
-const locationSlugs = ["india", "usa", "gulf"]
+const locationSlugs = ["india", "usa", "gulf", "uk-europe"]
 
 type SitemapEntry = MetadataRoute.Sitemap[number]
 

@@ -18,6 +18,9 @@ type MarketData = {
   metaTitle: string
   metaDescription: string
   areaServed: { type: string; name: string }[]
+  // hreflang codes this page is the canonical target for — keeps alternates
+  // accurate instead of every page claiming every locale (see generateMetadata).
+  localeCodes: string[]
 }
 
 export const markets: Record<string, MarketData> = {
@@ -46,6 +49,7 @@ export const markets: Record<string, MarketData> = {
       { type: "AdministrativeArea", name: "Bangalore, India" },
       { type: "AdministrativeArea", name: "Chennai, India" },
     ],
+    localeCodes: ["en-IN"],
   },
   usa: {
     region: "United States",
@@ -70,6 +74,7 @@ export const markets: Record<string, MarketData> = {
     areaServed: [
       { type: "Country", name: "United States" },
     ],
+    localeCodes: ["en-US"],
   },
   gulf: {
     region: "Gulf",
@@ -97,6 +102,35 @@ export const markets: Record<string, MarketData> = {
       { type: "Country", name: "Kuwait" },
       { type: "Country", name: "Qatar" },
     ],
+    localeCodes: ["en-AE", "en-SA", "en-KW", "en-QA", "en-TR"],
+  },
+  "uk-europe": {
+    region: "United Kingdom & Europe",
+    headline: "AI Automation Agency for the UK & Europe",
+    subheadline: "Multi-agent AI, N8n automation, and SaaS development for UK and European businesses",
+    intro:
+      "TechNest works with businesses across the United Kingdom, Germany, the Netherlands, and France as a remote, async-first delivery partner. India's working day overlaps with UK and CET mornings, so reviews and demos don't need to wait a full day for a reply — at pricing well below a UK or EU agency's day rates.",
+    highlights: [
+      { title: "Real morning overlap, async the rest of the day", description: "India's afternoon lines up with UK/CET mornings — enough live overlap for standups and demos, with written updates covering the rest of the day." },
+      { title: "GBP, EUR, or USD billing", description: "Invoice in Pounds, Euros, or US Dollars, fixed-scope and quoted upfront — whichever is simplest for your finance team." },
+      { title: "GDPR-aware data handling", description: "Data processing agreements and EU-compliant handling of any personal data your systems touch are part of the standard engagement, not an add-on." },
+      { title: "NDA and IP transfer as standard", description: "NDA signed before any work begins; 100% of source code and IP ownership transfers to you at project completion." },
+    ],
+    faq: [
+      { q: "What overlap can we expect with UK or CET working hours?", a: "Late morning through early afternoon UK/CET time overlaps with our team's working day, which covers live calls, demos, and reviews. Async written updates cover the rest — nothing waits a full 24 hours for a reply." },
+      { q: "How do you handle GDPR for our data?", a: "We sign a data processing agreement before any work involving personal data begins, and default to EU-compliant handling (data minimization, access controls, deletion on request) rather than treating it as a one-off ask." },
+      { q: "How does pricing compare to a UK or European development agency?", a: "Fixed-scope pricing typically runs well below UK/EU agency day rates for equivalent senior-engineer-led work. Minimum engagement starts at $1,000; typical projects run $3,000–$25,000." },
+    ],
+    metaTitle: "AI Automation Agency for the UK & Europe",
+    metaDescription:
+      "TechNest builds multi-agent AI systems, N8n automation, and SaaS platforms for UK and European businesses (UK, Germany, Netherlands, France). GDPR-aware, fixed-scope pricing, 100% IP transfer. Free strategy call.",
+    areaServed: [
+      { type: "Country", name: "United Kingdom" },
+      { type: "Country", name: "Germany" },
+      { type: "Country", name: "Netherlands" },
+      { type: "Country", name: "France" },
+    ],
+    localeCodes: ["en-GB", "en-DE", "en-NL", "en-FR"],
   },
 }
 
@@ -121,7 +155,10 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   return {
     title: data.metaTitle,
     description: data.metaDescription,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: Object.fromEntries(data.localeCodes.map((code) => [code, canonical])),
+    },
     openGraph: {
       type: "website",
       url: canonical,

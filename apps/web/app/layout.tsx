@@ -147,20 +147,13 @@ export const metadata: Metadata = {
       "Multi AI Agents, Agentic Workflows, SaaS & App Development, and AI-powered Digital Marketing for ambitious businesses.",
     images: [`${siteUrl}/og-image.png`],
   },
+  // Region-specific hreflang codes belong to their /locations/[slug] pages
+  // (each is the actual differentiated content for that market) — claiming
+  // them here too would give Google two conflicting URLs per locale.
   alternates: {
     canonical: siteUrl,
     languages: {
-      "en-IN": siteUrl,
-      "en-US": siteUrl,
-      "en-GB": siteUrl,
-      "en-AE": siteUrl,
-      "en-SA": siteUrl,
-      "en-KW": siteUrl,
-      "en-QA": siteUrl,
-      "en-DE": siteUrl,
-      "en-TR": siteUrl,
-      "en-NL": siteUrl,
-      "en-FR": siteUrl,
+      en: siteUrl,
       "x-default": siteUrl,
     },
   },

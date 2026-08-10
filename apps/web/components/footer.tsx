@@ -30,6 +30,7 @@ const marketLinks = [
   { label: "TechNest in India", href: "/locations/india" },
   { label: "TechNest in USA", href: "/locations/usa" },
   { label: "TechNest in the Gulf", href: "/locations/gulf" },
+  { label: "TechNest in UK & Europe", href: "/locations/uk-europe" },
 ]
 
 export function Footer() {
