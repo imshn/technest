@@ -1,3 +1,7 @@
+// ponytail: placeholder/illustrative content, not real client quotes — confirmed
+// 2026-08-10. Do not wire this into a page or publish as genuine testimonials
+// (named people + companies + fabricated metrics is an FTC endorsement-rules
+// risk) until replaced with real, consented quotes.
 const testimonials = [
   {
     quote:
