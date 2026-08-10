@@ -7,13 +7,24 @@ import { Services } from "@/components/services"
 import { Process } from "@/components/process"
 import { BlogPreview } from "@/components/blog-preview"
 import { NewsletterCTA } from "@/components/newsletter-cta"
-import { FAQ } from "@/components/faq"
+import { FAQ, faqs } from "@/components/faq"
 import { CTA } from "@/components/cta"
 import { Footer } from "@/components/footer"
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+}
 
 export default function Page() {
   return (
     <main className="min-h-dvh overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Navbar />
       <Hero />
       <Marquee />

@@ -36,6 +36,7 @@ const organizationSchema = {
     width: 180,
     height: 60,
   },
+  image: `${siteUrl}/og-image.png`,
   description:
     "TechNest is a remote-first, AI-native digital agency headquartered in Bengaluru, India, specializing in multi-agent systems, agentic workflows, N8n automation, SaaS development, and AI-powered marketing for startups and enterprises across India, the United States, the UK, the Gulf (UAE, Saudi Arabia, Kuwait, Qatar), and Europe.",
   email: "hello@technestsolutions.in",
@@ -111,6 +112,14 @@ const localBusinessSchema = {
     addressRegion: "Karnataka",
     addressCountry: "IN",
   },
+  // ponytail: city-center coordinates, not a street address — update to the exact
+  // office location if/when one is public (improves Maps/local-pack precision).
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 12.9716,
+    longitude: 77.5946,
+  },
+  image: `${siteUrl}/og-image.png`,
   description:
     "Remote-first AI automation agency headquartered in Bengaluru, India, building multi-agent systems, N8n workflows, and SaaS platforms for startups and enterprises. Serving clients across India, the United States, the Gulf (UAE, Saudi Arabia, Kuwait, Qatar), the UK, and Europe.",
   foundingDate: "2023",

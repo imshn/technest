@@ -1,4 +1,4 @@
-const faqs = [
+export const faqs = [
   {
     q: "What types of businesses do you typically work with?",
     a: "We work with startups, scale-ups, and mid-market companies across SaaS, fintech, operations, healthcare, and e-commerce. Our clients are usually at the point where manual processes are visibly slowing down growth — that's when automation yields the highest return.",
