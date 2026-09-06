@@ -65,7 +65,7 @@ export const markets: Record<string, MarketData> = {
     ],
     faq: [
       { q: "What US time zones do you cover?", a: "We're async-first and cover all US time zones on a rolling basis, with live overlap typically in the morning Eastern / evening India time for calls, demos, and reviews." },
-      { q: "How does pricing compare to a US development agency?", a: "Fixed-scope pricing typically runs well below US agency day rates for equivalent senior-engineer-led work, since the team is based in India. Minimum engagement starts at $1,000; typical projects run $3,000–$25,000." },
+      { q: "How does pricing compare to a US development agency?", a: "Fixed-scope pricing typically runs well below US agency day rates for equivalent senior-engineer-led work, since the team is based in India. Every engagement is quoted against your specific requirements after a free scoping call — no published rate card, no hourly billing." },
       { q: "Who owns the code?", a: "You do, 100%. IP and source code transfer to you at project completion — no ongoing license or lock-in." },
     ],
     metaTitle: "AI Automation Agency for US Businesses",
@@ -119,7 +119,7 @@ export const markets: Record<string, MarketData> = {
     faq: [
       { q: "What overlap can we expect with UK or CET working hours?", a: "Late morning through early afternoon UK/CET time overlaps with our team's working day, which covers live calls, demos, and reviews. Async written updates cover the rest — nothing waits a full 24 hours for a reply." },
       { q: "How do you handle GDPR for our data?", a: "We sign a data processing agreement before any work involving personal data begins, and default to EU-compliant handling (data minimization, access controls, deletion on request) rather than treating it as a one-off ask." },
-      { q: "How does pricing compare to a UK or European development agency?", a: "Fixed-scope pricing typically runs well below UK/EU agency day rates for equivalent senior-engineer-led work. Minimum engagement starts at $1,000; typical projects run $3,000–$25,000." },
+      { q: "How does pricing compare to a UK or European development agency?", a: "Fixed-scope pricing typically runs well below UK/EU agency day rates for equivalent senior-engineer-led work. Every engagement is quoted against your specific requirements after a free scoping call — no published rate card, no hourly billing." },
     ],
     metaTitle: "AI Automation Agency for the UK & Europe",
     metaDescription:

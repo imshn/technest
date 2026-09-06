@@ -53,7 +53,7 @@ export const comparisons: Record<string, CompareData> = {
     intro:
       "Toptal provides vetted senior developers on a contract basis. TechNest provides a complete project team that owns delivery from architecture to launch. Different models for different needs.",
     rows: [
-      { feature: "Minimum engagement cost", technest: "From $1000 (project-based)", competitor: "$10,000+ (160 hours minimum)" },
+      { feature: "Minimum engagement cost", technest: "Scoped to your project, quoted upfront", competitor: "$10,000+ (160 hours minimum)" },
       { feature: "Team structure", technest: "Dedicated engineer + PM", competitor: "Individual contractors" },
       { feature: "Architecture ownership", technest: "Agency-owned, full accountability", competitor: "You direct the engagement" },
       { feature: "AI/automation specialists", technest: "Core focus", competitor: "General software engineers" },

@@ -25,7 +25,7 @@ export const faqs = [
   },
   {
     q: "How do you price projects — fixed cost or hourly?",
-    a: "Fixed-scope engagements only. We define deliverables upfront and price against outcomes, not hours. This means no invoice surprises and no incentive to pad timelines. Project minimums start at $1000 USD.",
+    a: "Fixed-scope engagements only. We define deliverables upfront and price against outcomes, not hours. This means no invoice surprises and no incentive to pad timelines. Every quote is scoped to your specific requirements after a free call — no published rate card.",
   },
   {
     q: "Can you integrate AI agents with our existing tools like HubSpot, Salesforce, or Notion?",

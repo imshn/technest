@@ -123,7 +123,7 @@ export default function ServicesPage() {
               Services
             </h1>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-[60ch]">
-              Fixed-scope, fully remote engagements with weekly milestones. 100% IP transfer on completion. Projects from $1,000 — enterprise systems from $5,000.
+              Fixed-scope, fully remote engagements with weekly milestones. 100% IP transfer on completion. Priced against your requirements after a free scoping call — no hourly billing, no surprises.
             </p>
           </header>
 
