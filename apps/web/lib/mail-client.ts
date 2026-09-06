@@ -1,14 +1,9 @@
 /**
- * TechNest mail — EmailJS for the contact form, SMTP for the newsletter,
+ * TechNest mail — EmailJS for the contact form and newsletter notifications,
  * MySQL for storage. Server-side only.
  */
-import { sendNewsletterDirect } from "./mail-send"
 import { storeContact as storeContactDb, storeSubscriber as storeSubscriberDb } from "./inbound-store"
 import { isEmailJsConfigured, sendContactNotificationViaEmailJS, sendAutoReplyViaEmailJS } from "./emailjs"
-
-function canUseSmtp(): boolean {
-  return Boolean(process.env.SMTP_PASS?.trim())
-}
 
 export interface ContactPayload {
   name: string
@@ -40,11 +35,16 @@ export async function sendContactMail(data: ContactPayload): Promise<void> {
 }
 
 export async function sendNewsletterMail(email: string): Promise<void> {
-  if (!canUseSmtp()) {
-    throw new Error("Set SMTP_PASS for mail.")
+  if (!isEmailJsConfigured()) {
+    throw new Error("Set EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, and EMAILJS_PUBLIC_KEY for mail.")
   }
 
-  await sendNewsletterDirect(email)
+  await sendContactNotificationViaEmailJS({
+    name: "Newsletter signup",
+    email,
+    message: `New newsletter subscriber: ${email}`,
+    title: "Newsletter signup",
+  })
   await storeSubscriberDb(email).catch((err) => {
     console.error("[mail] MySQL subscriber store failed:", err)
   })
