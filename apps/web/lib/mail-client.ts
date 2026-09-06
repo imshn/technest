@@ -1,9 +1,8 @@
 /**
  * TechNest mail — EmailJS for the contact form, SMTP for the newsletter,
- * JARVIS LanceDB + MySQL for storage. Server-side only.
+ * MySQL for storage. Server-side only.
  */
 import { sendNewsletterDirect } from "./mail-send"
-import { isJarvisConfigured, jarvisFetch } from "./jarvis-client"
 import { storeContact as storeContactDb, storeSubscriber as storeSubscriberDb } from "./inbound-store"
 import { isEmailJsConfigured, sendContactNotificationViaEmailJS, sendAutoReplyViaEmailJS } from "./emailjs"
 
@@ -19,35 +18,6 @@ export interface ContactPayload {
   projectType?: string
   budget?: string
   phone?: string
-}
-
-async function storeContactInJarvis(data: ContactPayload): Promise<void> {
-  if (!isJarvisConfigured()) return
-  try {
-    await jarvisFetch("/technest/contacts/store", {
-      body: {
-        name: data.name,
-        email: data.email,
-        message: data.message,
-        company: data.company,
-        projectType: data.projectType,
-        budget: data.budget,
-      },
-    })
-  } catch (err) {
-    console.error("[mail] JARVIS contact store failed:", err)
-  }
-}
-
-async function storeNewsletterInJarvis(email: string): Promise<void> {
-  if (!isJarvisConfigured()) return
-  try {
-    await jarvisFetch("/technest/subscriptions/store", {
-      body: { email, source: "technest_newsletter" },
-    })
-  } catch (err) {
-    console.error("[mail] JARVIS newsletter store failed:", err)
-  }
 }
 
 async function persistContactEverywhere(data: ContactPayload): Promise<void> {
@@ -66,32 +36,15 @@ export async function sendContactMail(data: ContactPayload): Promise<void> {
   await sendAutoReplyViaEmailJS(emailJsData).catch((err) => {
     console.error("[mail] EmailJS auto-reply failed (notification still sent):", err)
   })
-  await storeContactInJarvis(data)
   await persistContactEverywhere(data)
 }
 
 export async function sendNewsletterMail(email: string): Promise<void> {
-  if (isJarvisConfigured()) {
-    try {
-      await jarvisFetch<{ success: boolean }>("/newsletter", {
-        body: { email, source: "technest_newsletter" },
-      })
-      await storeSubscriberDb(email).catch((err) => {
-        console.error("[mail] MySQL subscriber store failed:", err)
-      })
-      return
-    } catch (err) {
-      console.error("[mail] JARVIS newsletter failed, falling back to SMTP:", err)
-      await storeNewsletterInJarvis(email)
-    }
-  }
-
   if (!canUseSmtp()) {
-    throw new Error("Set JARVIS_API_URL + TECHNEST_API_KEY, or SMTP_PASS for mail.")
+    throw new Error("Set SMTP_PASS for mail.")
   }
 
   await sendNewsletterDirect(email)
-  await storeNewsletterInJarvis(email)
   await storeSubscriberDb(email).catch((err) => {
     console.error("[mail] MySQL subscriber store failed:", err)
   })

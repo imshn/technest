@@ -1,5 +1,5 @@
 /**
- * EmailJS — last-resort fallback if JARVIS and SMTP both fail.
+ * EmailJS — sends the contact form notification + auto-reply.
  * Server-side calls require "Allow EmailJS API for non-browser applications"
  * enabled in the EmailJS account's Security settings.
  */
