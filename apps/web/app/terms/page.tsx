@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const LAST_UPDATED = "April 19, 2025"
+const LAST_UPDATED = "September 6, 2026"
 const CONTACT_EMAIL = "hello@technestsolutions.in"
 const SITE_URL = "https://technestsolutions.in"
 
@@ -46,10 +46,12 @@ export default function TermsPage() {
 
             <h2>1. About TechNest</h2>
             <p>
-              TechNest is an AI automation and software development agency founded by Shaan. We build
-              multi-agent AI systems, workflow automations, SaaS platforms, and digital products for
-              businesses globally. Our automation tools may interact with third-party platforms
-              including Twitter/X, on behalf of authorised users.
+              TechNest is a remote-first AI automation and software development agency founded by Shaan,
+              headquartered in Bengaluru, India. We build multi-agent AI systems, N8n/workflow automation,
+              SaaS and web platforms, mobile apps, and AI-powered digital marketing (GEO/SEO) for businesses
+              across India, the US, the UK, Europe, and the Gulf. Where a project requires it, our automation
+              tools may connect to third-party platforms (CRMs, communication tools, social platforms, and
+              custom APIs) on behalf of authorised users, strictly within the scope you configure.
             </p>
 
             <h2>2. Use of Services</h2>
@@ -59,22 +61,16 @@ export default function TermsPage() {
               <li>Use the Services to send spam, unsolicited messages, or engage in abusive behaviour</li>
               <li>Attempt to gain unauthorised access to any part of the Services</li>
               <li>Use the Services in any way that could disable, overburden, or impair them</li>
-              <li>Violate the terms of any third-party platform we integrate with, including Twitter/X Developer Terms</li>
+              <li>Violate the terms of any third-party platform we integrate with on your behalf</li>
             </ul>
 
-            <h2>3. Twitter / X Integration</h2>
+            <h2>3. Third-Party Platform Integrations</h2>
             <p>
-              Some of our automation tools connect to the Twitter/X API. When you authorise our tools
-              to access your Twitter/X account, you grant us permission to perform only the specific
-              actions you have explicitly configured. We do not post, follow, or interact on your
-              behalf without your instruction. We comply with the{" "}
-              <a href="https://developer.twitter.com/en/developer-terms/policy" target="_blank" rel="noopener noreferrer">
-                Twitter Developer Policy
-              </a>{" "}
-              and the{" "}
-              <a href="https://twitter.com/en/tos" target="_blank" rel="noopener noreferrer">
-                Twitter Terms of Service
-              </a>.
+              Where a project involves connecting to a third-party platform (for example a CRM, email
+              provider, or social platform API), you grant us permission to perform only the specific
+              actions you have explicitly configured for that integration. We do not take actions on a
+              connected account beyond your instructions, and we comply with the applicable developer
+              terms and policies of each platform we integrate with.
             </p>
 
             <h2>4. Intellectual Property</h2>

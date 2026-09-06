@@ -142,6 +142,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <a href="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-150">Privacy Policy</a>
             <a href="/terms" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-150">Terms of Service</a>
+            <a href="/refund-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-150">Refund Policy</a>
           </div>
         </div>
       </div>

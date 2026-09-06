@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const LAST_UPDATED = "April 19, 2025"
+const LAST_UPDATED = "September 6, 2026"
 const CONTACT_EMAIL = "hello@technestsolutions.in"
 const SITE_URL = "https://technestsolutions.in"
 
@@ -59,19 +59,18 @@ export default function PrivacyPage() {
               <li><strong>Cookies</strong> — session cookies for the admin panel; analytics cookies from Google Analytics. No advertising or tracking cookies are set.</li>
             </ul>
 
-            <h3>Twitter / X account data</h3>
+            <h3>Third-party platform data (when automation is configured)</h3>
             <p>
-              When you authorise our automation tools to connect to your Twitter/X account, we may access:
+              When a project involves connecting our automation tools to a third-party platform (a CRM,
+              email provider, or social platform, for example), we may access only the data needed for
+              the specific actions you have explicitly configured — such as account identifiers, messages,
+              or records you direct us to read or act upon.
             </p>
-            <ul>
-              <li>Your Twitter/X username and public profile information</li>
-              <li>Tweets, replies, and engagement data you explicitly configure us to read or act upon</li>
-            </ul>
             <p>
-              We do <strong>not</strong> store your Twitter/X credentials. Access is granted via OAuth
-              tokens which you can revoke at any time through your Twitter/X account settings. We do
-              not sell, share, or use Twitter/X data for any purpose beyond the specific automation
-              you have configured.
+              We do <strong>not</strong> store third-party platform credentials directly. Access is
+              granted via OAuth tokens or scoped API keys, which you can revoke at any time through that
+              platform's own account settings. We do not sell, share, or use this data for any purpose
+              beyond the automation you have configured.
             </p>
 
             <h2>2. How We Use Your Information</h2>
@@ -87,8 +86,8 @@ export default function PrivacyPage() {
             <h2>3. Data Storage and Security</h2>
             <p>
               Website data is stored on Vercel (US/EU infrastructure). Client project data is stored
-              on secure, access-controlled servers. Newsletter subscriber emails are stored in our
-              own database hosted on a private VPS. We use HTTPS, access controls, and API key
+              on secure, access-controlled servers. Newsletter subscriber emails are stored in a
+              managed MySQL database (hosted by Hostinger). We use HTTPS, access controls, and API key
               authentication to protect all data in transit and at rest.
             </p>
             <p>
@@ -109,9 +108,15 @@ export default function PrivacyPage() {
             <ul>
               <li><strong>Google Analytics 4</strong> — website analytics (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>)</li>
               <li><strong>Vercel</strong> — website hosting and analytics (<a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel Privacy Policy</a>)</li>
-              <li><strong>Twitter/X API</strong> — for authorised automation only (<a href="https://twitter.com/en/privacy" target="_blank" rel="noopener noreferrer">Twitter Privacy Policy</a>)</li>
+              <li><strong>EmailJS</strong> — delivers contact form and newsletter notifications (<a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS Privacy Policy</a>)</li>
+              <li><strong>Hostinger</strong> — hosts our contact and subscriber database (<a href="https://www.hostinger.com/privacy-policy" target="_blank" rel="noopener noreferrer">Hostinger Privacy Policy</a>)</li>
+              <li><strong>Cloudflare</strong> — email routing for our domain (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>)</li>
               <li><strong>Calendly</strong> — meeting scheduling (data governed by Calendly&apos;s privacy policy)</li>
             </ul>
+            <p>
+              Where a project involves a client-directed integration (a CRM, social platform, or other
+              API), that platform's own privacy policy also governs the data it processes.
+            </p>
 
             <h2>6. Your Rights</h2>
             <p>Depending on your location, you may have the right to:</p>
@@ -127,21 +132,42 @@ export default function PrivacyPage() {
               <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We will respond within 30 days.
             </p>
 
-            <h2>7. Children&apos;s Privacy</h2>
+            <h2>7. India — Digital Personal Data Protection Act, 2023</h2>
+            <p>
+              For personal data of individuals in India, this Privacy Policy is intended to align with
+              the Digital Personal Data Protection Act, 2023 (DPDP Act). As a data principal, you have
+              the right to access, correct, and erase your personal data, to withdraw consent at any
+              time, and to nominate another individual to exercise these rights on your behalf in the
+              event of death or incapacity. We retain personal data only as long as necessary for the
+              purpose it was collected for, as set out in Section 4 above.
+            </p>
+            <p>
+              <strong>Grievance Officer:</strong> Shaan, reachable at{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, is our designated contact for any
+              privacy complaint or grievance under the DPDP Act. We aim to acknowledge grievances within
+              7 days and resolve them within 30 days.
+            </p>
+            <p>
+              This section is provided as a general summary and does not constitute legal advice. For
+              guidance on your specific obligations or rights under the DPDP Act, consult a qualified
+              advocate or data protection professional.
+            </p>
+
+            <h2>8. Children&apos;s Privacy</h2>
             <p>
               Our Services are not directed to children under the age of 13. We do not knowingly
               collect personal information from children. If you believe we have inadvertently
               collected such data, please contact us and we will delete it promptly.
             </p>
 
-            <h2>8. Changes to This Policy</h2>
+            <h2>9. Changes to This Policy</h2>
             <p>
               We may update this Privacy Policy periodically. We will notify you of significant
               changes by updating the &quot;Last updated&quot; date. Your continued use of our Services
               after any change constitutes your acceptance of the revised policy.
             </p>
 
-            <h2>9. Contact</h2>
+            <h2>10. Contact</h2>
             <p>
               For any privacy-related questions or requests, contact us at{" "}
               <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
